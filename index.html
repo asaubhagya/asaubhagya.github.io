@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meetly - AI Meeting Assistant | Private, Secure, On-Device</title>
+    <meta name="description" content="Transform your meetings with AI-powered transcription. 100% private, on-device processing. No cloud sharing. Support for 90+ languages.">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo">
+                    <span class="logo-text">Meetly</span>
+                    <span class="beta-badge">BETA</span>
+                </div>
+                <div class="nav-links">
+                    <a href="#features">Features</a>
+                    <a href="#use-cases">Use Cases</a>
+                    <a href="privacy.html">Privacy</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="badge-container">
+                        <span class="limited-badge">🎯 Limited Time: FREE Download</span>
+                    </div>
+                    <h1 class="hero-title">
+                        Your Meetings,<br>
+                        <span class="gradient-text">100% Private</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        Professional meeting transcription powered by OpenAI's Whisper. 
+                        Everything stays on your device. No cloud. No compromise.
+                    </p>
+                    <div class="hero-features">
+                        <div class="feature-pill">
+                            <svg class="feature-icon" width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                <path d="M9 11L12 14L22 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                            <span>90+ Languages</span>
+                        </div>
+                        <div class="feature-pill">
+                            <svg class="feature-icon" width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                <path d="M12 2L2 7V12C2 16.5 5 20.5 12 22C19 20.5 22 16.5 22 12V7L12 2Z" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                            <span>Background Recording</span>
+                        </div>
+                        <div class="feature-pill">
+                            <svg class="feature-icon" width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                                <path d="M12 6V12L16 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                            <span>Hours of Recording</span>
+                        </div>
+                    </div>
+                    <div class="cta-container">
+                        <a href="#" class="cta-button">
+                            <svg class="apple-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.09997 22C7.78997 22.05 6.79997 20.68 5.95997 19.47C4.24997 16.97 2.93997 12.45 4.69997 9.39C5.56997 7.87 7.12997 6.91 8.81997 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.1 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z"/>
+                            </svg>
+                            Download on App Store
+                        </a>
+                        <p class="cta-note">
+                            <span class="warning-icon">⚡</span>
+                            Beta release ends soon. Future versions will have restrictions.
+                        </p>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="hero-demo">
+                        <img src="how_it_works.gif" alt="Meetly in Action - Record, Transcribe, Share" class="hero-gif">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Enterprise-Grade Privacy</h2>
+                <p class="section-subtitle">Your confidential meetings never leave your device</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon-container">
+                        <svg class="feature-main-icon" width="32" height="32" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 15V17M6 21H18C19.1 21 20 20.1 20 19V10C20 8.9 19.1 8 18 8H6C4.9 8 4 8.9 4 10V19C4 20.1 4.9 21 6 21ZM16 8V6C16 3.79 14.21 2 12 2C9.79 2 8 3.79 8 6V8H16Z" stroke="url(#gradient)" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3>Zero Cloud Storage</h3>
+                    <p>All transcription happens locally. Your sensitive meetings never touch external servers.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon-container">
+                        <svg class="feature-main-icon" width="32" height="32" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="url(#gradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M2 17L12 22L22 17" stroke="url(#gradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M2 12L12 17L22 12" stroke="url(#gradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3>Advanced Compression</h3>
+                    <p>Record hours of meetings with our state-of-the-art audio compression. Crystal clear at 48kHz.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon-container">
+                        <svg class="feature-main-icon" width="32" height="32" viewBox="0 0 24 24" fill="none">
+                            <circle cx="12" cy="12" r="10" stroke="url(#gradient)" stroke-width="2"/>
+                            <path d="M12 6V12L16 14" stroke="url(#gradient)" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3>Real-Time Processing</h3>
+                    <p>Powered by OpenAI's Whisper. Get accurate transcriptions in seconds, not minutes.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon-container">
+                        <svg class="feature-main-icon" width="32" height="32" viewBox="0 0 24 24" fill="none">
+                            <path d="M3 5H21M3 5C3 4.45 3.45 4 4 4H20C20.55 4 21 4.45 21 5M3 5V19C3 19.55 3.45 20 4 20H20C20.55 20 21 19.55 21 19V5" stroke="url(#gradient)" stroke-width="2"/>
+                            <path d="M8 10H16M8 14H13" stroke="url(#gradient)" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3>75+ Languages</h3>
+                    <p>Detect and transcribe in Hindi, Chinese, Arabic, and 72+ more languages. Auto-translate to English.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases Section -->
+    <section id="use-cases" class="use-cases">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Built for Professionals</h2>
+                <p class="section-subtitle">Where privacy and accuracy matter most</p>
+            </div>
+            <div class="use-cases-grid">
+                <div class="use-case-card">
+                    <div class="use-case-icon">⚖️</div>
+                    <h3>Legal Professionals</h3>
+                    <p>Client meetings, depositions, and case discussions stay confidential. No cloud risk for sensitive legal matters.</p>
+                </div>
+                <div class="use-case-card">
+                    <div class="use-case-icon">🏥</div>
+                    <h3>Healthcare Providers</h3>
+                    <p>HIPAA concerns? Patient consultations remain on-device. Perfect for medical professionals prioritizing privacy.</p>
+                </div>
+                <div class="use-case-card">
+                    <div class="use-case-icon">💼</div>
+                    <h3>C-Suite Executives</h3>
+                    <p>Board meetings, M&A discussions, strategic planning - all transcribed without corporate espionage risks.</p>
+                </div>
+                <div class="use-case-card">
+                    <div class="use-case-icon">🔬</div>
+                    <h3>Researchers</h3>
+                    <p>Interview transcriptions for qualitative research. Maintain participant confidentiality with local processing.</p>
+                </div>
+                <div class="use-case-card">
+                    <div class="use-case-icon">📊</div>
+                    <h3>Financial Advisors</h3>
+                    <p>Client portfolio discussions and investment strategies transcribed securely without compliance concerns.</p>
+                </div>
+                <div class="use-case-card">
+                    <div class="use-case-icon">🎯</div>
+                    <h3>HR Professionals</h3>
+                    <p>Performance reviews, exit interviews, and sensitive employee discussions with complete confidentiality.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">How It Works</h2>
+                <p class="section-subtitle">Professional meeting transcription in 3 simple steps</p>
+            </div>
+            
+            <div class="how-it-works-content">
+                <div class="workflow-steps">
+                    <div class="step-item active" data-step="0">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Record</h3>
+                            <p>One tap to start. Continues in background even when phone is locked.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step-item" data-step="1">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Transcribe</h3>
+                            <p>AI automatically converts speech to text in 90+ languages.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="step-item" data-step="2">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Share</h3>
+                            <p>Export to messaging apps or AI tools like ChatGPT and Claude.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="demo-carousel-container">
+                    <div class="iphone-mockup">
+                        <div class="demo-carousel" id="demoCarousel">
+                            <div class="carousel-slide active">
+                                <img src="hero_section_images/1.jpeg" alt="Start Recording" class="carousel-image">
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="hero_section_images/2.jpeg" alt="Recording in Progress" class="carousel-image">
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="hero_section_images/3.jpeg" alt="Processing Audio" class="carousel-image">
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="hero_section_images/4.jpeg" alt="Transcription Complete" class="carousel-image">
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="hero_section_images/5.jpeg" alt="Interactive Timeline" class="carousel-image">
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="hero_section_images/6.jpeg" alt="AI Summary" class="carousel-image">
+                            </div>
+                            <div class="carousel-slide">
+                                <img src="hero_section_images/7.jpeg" alt="Share Results" class="carousel-image">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-indicators">
+                        <span class="indicator active" data-slide="0"></span>
+                        <span class="indicator" data-slide="1"></span>
+                        <span class="indicator" data-slide="2"></span>
+                        <span class="indicator" data-slide="3"></span>
+                        <span class="indicator" data-slide="4"></span>
+                        <span class="indicator" data-slide="5"></span>
+                        <span class="indicator" data-slide="6"></span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Key Features Grid -->
+            <div class="key-features-grid">
+                <div class="key-feature">
+                    <div class="key-feature-icon">🎙️</div>
+                    <h4>Background Recording</h4>
+                    <p>Continues recording even when app is closed or phone is locked</p>
+                </div>
+                
+                <div class="key-feature">
+                    <div class="key-feature-icon">🌍</div>
+                    <h4>90+ Languages</h4>
+                    <p>Detect and transcribe any language, auto-translate to English</p>
+                </div>
+                
+                <div class="key-feature">
+                    <div class="key-feature-icon">⏰</div>
+                    <h4>Hours of Recording</h4>
+                    <p>Advanced compression for extended meetings without storage issues</p>
+                </div>
+                
+                <div class="key-feature">
+                    <div class="key-feature-icon">🔒</div>
+                    <h4>100% Local</h4>
+                    <p>All processing happens on your device, no cloud uploads ever</p>
+                </div>
+                
+                <div class="key-feature">
+                    <div class="key-feature-icon">🤖</div>
+                    <h4>AI Summaries</h4>
+                    <p>Generate intelligent meeting summaries and action items</p>
+                </div>
+                
+                <div class="key-feature">
+                    <div class="key-feature-icon">📱</div>
+                    <h4>Easy Sharing</h4>
+                    <p>Share via messaging apps or export to ChatGPT, Claude, and more</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="final-cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Download Free During Beta</h2>
+                <p class="cta-subtitle">Join thousands of professionals who've already secured their free copy</p>
+                <div class="countdown-container">
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="days">14</span>
+                        <span class="countdown-label">Days</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="hours">08</span>
+                        <span class="countdown-label">Hours</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="minutes">42</span>
+                        <span class="countdown-label">Minutes</span>
+                    </div>
+                </div>
+                <a href="#" class="cta-button-large">
+                    <svg class="apple-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.09997 22C7.78997 22.05 6.79997 20.68 5.95997 19.47C4.24997 16.97 2.93997 12.45 4.69997 9.39C5.56997 7.87 7.12997 6.91 8.81997 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.1 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z"/>
+                    </svg>
+                    Get Meetly Free
+                </a>
+                <p class="final-note">Future versions will require subscription • No credit card needed</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo-text">Meetly</span>
+                    <p class="footer-tagline">Your meetings, your privacy.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="support.html">Support</a>
+                    <a href="mailto:support@meetly.app">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Meetly. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SVG Gradients -->
+    <svg width="0" height="0">
+        <defs>
+            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#00F260;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#0575E6;stop-opacity:1" />
+            </linearGradient>
+        </defs>
+    </svg>
+
+    <script src="script.js"></script>
+</body>
+</html> 

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support - Meetly</title>
+    <meta name="description" content="Get help with Meetly - FAQ, troubleshooting, and contact support.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="privacy-styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .faq-item {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .faq-item:hover {
+            border-color: rgba(0, 242, 96, 0.2);
+        }
+        
+        .faq-question {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-answer {
+            color: var(--gray-400);
+            line-height: 1.6;
+            display: none;
+            margin-top: 16px;
+        }
+        
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+        
+        .faq-icon {
+            transition: transform 0.3s;
+        }
+        
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo">
+                    <a href="index.html" class="logo-link">
+                        <span class="logo-text">Meetly</span>
+                    </a>
+                </div>
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="index.html#features">Features</a>
+                    <a href="privacy.html">Privacy</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Support Content -->
+    <section class="privacy-content">
+        <div class="container">
+            <div class="privacy-header">
+                <h1 class="privacy-title">Support Center</h1>
+                <p class="privacy-subtitle">Get help with Meetly</p>
+            </div>
+
+            <div class="privacy-body">
+                <section class="privacy-section">
+                    <h2>Frequently Asked Questions</h2>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            How do I start recording a meeting?
+                            <span class="faq-icon">▼</span>
+                        </div>
+                        <div class="faq-answer">
+                            Simply tap the + button on the main screen to start a new recording. Give your meeting a title and tap "Start Recording". The recording will continue even if you leave the app or lock your phone.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            Which Whisper model should I choose?
+                            <span class="faq-icon">▼</span>
+                        </div>
+                        <div class="faq-answer">
+                            • <strong>Tiny (39MB)</strong>: Fastest processing, good for quick notes<br>
+                            • <strong>Small (244MB)</strong>: Best balance of speed and accuracy (recommended)<br>
+                            • <strong>Base (142MB)</strong>: Highest accuracy for important meetings<br><br>
+                            You can change models anytime in Settings.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            Is my data really private?
+                            <span class="faq-icon">▼</span>
+                        </div>
+                        <div class="faq-answer">
+                            Yes! All transcription happens on your device using WhisperKit. Your audio files and transcripts are never uploaded to any server. The only network activity is the one-time download of the Whisper model you select.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            How do I export my transcripts?
+                            <span class="faq-icon">▼</span>
+                        </div>
+                        <div class="faq-answer">
+                            Open any meeting and tap the share button. You can:<br>
+                            • Copy the formatted transcript to clipboard<br>
+                            • Generate a PDF report<br>
+                            • Share via email or messages<br>
+                            • Export to AI tools like ChatGPT or Claude
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            What languages are supported?
+                            <span class="faq-icon">▼</span>
+                        </div>
+                        <div class="faq-answer">
+                            Meetly supports 75+ languages including English, Spanish, French, German, Chinese, Japanese, Hindi, Arabic, and many more. The app automatically detects the language being spoken and can translate foreign languages to English.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            Why is the app free during beta?
+                            <span class="faq-icon">▼</span>
+                        </div>
+                        <div class="faq-answer">
+                            We're offering Meetly free during our beta period to gather feedback and improve the app. Users who download during beta will get lifetime access to core features. Future versions may require a subscription for advanced features.
+                        </div>
+                    </div>
+                </section>
+
+                <section class="privacy-section">
+                    <h2>Troubleshooting</h2>
+                    
+                    <div class="highlight-box">
+                        <div class="highlight-icon">🎤</div>
+                        <div class="highlight-content">
+                            <h4>Microphone Permission</h4>
+                            <p>If recording isn't working, go to Settings → Meetly → Microphone and ensure permission is enabled.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="highlight-box">
+                        <div class="highlight-icon">💾</div>
+                        <div class="highlight-content">
+                            <h4>Storage Space</h4>
+                            <p>Ensure you have enough storage for recordings. Check available space in Meetly Settings → Storage Management.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="privacy-section">
+                    <h2>Contact Support</h2>
+                    <p>Still need help? We're here for you.</p>
+                    <div class="contact-info">
+                        <p><strong>Email:</strong> <a href="mailto:support@meetly.app">support@meetly.app</a></p>
+                        <p><strong>Response Time:</strong> Within 24 hours</p>
+                        <p><strong>Twitter:</strong> <a href="https://twitter.com/meetlyapp">@meetlyapp</a></p>
+                    </div>
+                </section>
+
+                <section class="privacy-section">
+                    <h2>Feature Requests</h2>
+                    <p>Have an idea to make Meetly better? We'd love to hear it! Send your suggestions to <a href="mailto:features@meetly.app">features@meetly.app</a></p>
+                </section>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo-text">Meetly</span>
+                    <p class="footer-tagline">Your meetings, your privacy.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html">Home</a>
+                    <a href="privacy.html">Privacy</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Meetly. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Toggle
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.addEventListener('click', () => {
+                item.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html> 
