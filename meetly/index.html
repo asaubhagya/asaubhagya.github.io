@@ -3,88 +3,336 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meetly - AI Meeting Assistant | Private, Secure, On-Device</title>
-    <meta name="description" content="Transform your meetings with AI-powered transcription. 100% private, on-device processing. No cloud sharing. Support for 90+ languages.">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    <link rel="stylesheet" href="styles.css">
+    <title>Meetly - Private AI Voice Recorder</title>
+    <meta name="description" content="Private AI voice recorder with unlimited multi-language recording, transcription, and AI summarization. Nothing leaves your device.">
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'urbanist': ['Urbanist', 'sans-serif'],
+                    },
+                    colors: {
+                        'soft-black': '#1a1a1a',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .paper-texture {
+            background-color: #fefefe;
+            background-image: 
+                /* Subtle paper grain */
+                radial-gradient(circle at 25% 25%, rgba(0, 0, 0, 0.008) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(0, 0, 0, 0.008) 0%, transparent 50%),
+                radial-gradient(circle at 75% 25%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 25% 75%, rgba(0, 0, 0, 0.005) 0%, transparent 50%),
+                /* Very subtle fiber texture */
+                linear-gradient(45deg, transparent 48%, rgba(0, 0, 0, 0.003) 49%, rgba(0, 0, 0, 0.003) 51%, transparent 52%),
+                linear-gradient(-45deg, transparent 48%, rgba(0, 0, 0, 0.002) 49%, rgba(0, 0, 0, 0.002) 51%, transparent 52%),
+                /* Subtle noise pattern */
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(0, 0, 0, 0.002) 2px,
+                    rgba(0, 0, 0, 0.002) 4px
+                ),
+                repeating-linear-gradient(
+                    90deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(0, 0, 0, 0.001) 2px,
+                    rgba(0, 0, 0, 0.001) 4px
+                );
+            background-size: 
+                200px 200px,
+                180px 180px,
+                220px 220px,
+                160px 160px,
+                100px 100px,
+                120px 120px,
+                8px 8px,
+                8px 8px;
+        }
+        
+        .audio-wave {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+        }
+        
+        .wave-bar {
+            width: 3px;
+            background: linear-gradient(to top, #4a4a4a, #2a2a2a);
+            border-radius: 2px;
+            animation: wave 1.5s ease-in-out infinite;
+        }
+        
+        .wave-bar:nth-child(1) { height: 20px; animation-delay: 0s; }
+        .wave-bar:nth-child(2) { height: 30px; animation-delay: 0.1s; }
+        .wave-bar:nth-child(3) { height: 25px; animation-delay: 0.2s; }
+        .wave-bar:nth-child(4) { height: 35px; animation-delay: 0.3s; }
+        .wave-bar:nth-child(5) { height: 20px; animation-delay: 0.4s; }
+        .wave-bar:nth-child(6) { height: 30px; animation-delay: 0.5s; }
+        .wave-bar:nth-child(7) { height: 25px; animation-delay: 0.6s; }
+        
+        @keyframes wave {
+            0%, 100% { transform: scaleY(1); }
+            50% { transform: scaleY(0.3); }
+        }
+        
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
+        }
+        
+        .scroll-reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .floating-text {
+            position: absolute;
+            color: rgba(0, 0, 0, 0.12);
+            font-weight: 300;
+            pointer-events: none;
+            user-select: none;
+            z-index: 1;
+            animation: cornerFade 6s ease-in-out infinite;
+        }
+        
+        @keyframes cornerFade {
+            0%, 100% { 
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            30%, 70% { 
+                opacity: 0.8;
+                transform: scale(1);
+            }
+        }
+        
+        /* Position text in different areas of hero section */
+        .floating-text:nth-child(1) { 
+            top: 15%; 
+            left: 8%; 
+            animation-delay: 0s; 
+            font-size: 22px; 
+        }
+        .floating-text:nth-child(2) { 
+            top: 20%; 
+            right: 10%; 
+            animation-delay: 1s; 
+            font-size: 18px; 
+        }
+        .floating-text:nth-child(3) { 
+            bottom: 30%; 
+            left: 12%; 
+            animation-delay: 2s; 
+            font-size: 24px; 
+        }
+        .floating-text:nth-child(4) { 
+            bottom: 25%; 
+            right: 8%; 
+            animation-delay: 3s; 
+            font-size: 20px; 
+        }
+        .floating-text:nth-child(5) { 
+            top: 60%; 
+            left: 5%; 
+            animation-delay: 4s; 
+            font-size: 26px; 
+        }
+        .floating-text:nth-child(6) { 
+            top: 40%; 
+            right: 15%; 
+            animation-delay: 5s; 
+            font-size: 19px; 
+        }
+        .floating-text:nth-child(7) { 
+            bottom: 40%; 
+            left: 20%; 
+            animation-delay: 0.5s; 
+            font-size: 21px; 
+        }
+        .floating-text:nth-child(8) { 
+            top: 70%; 
+            right: 12%; 
+            animation-delay: 1.5s; 
+            font-size: 23px; 
+        }
+        .floating-text:nth-child(9) { 
+            bottom: 50%; 
+            right: 25%; 
+            animation-delay: 2.5s; 
+            font-size: 20px; 
+        }
+        .floating-text:nth-child(10) { 
+            top: 35%; 
+            left: 15%; 
+            animation-delay: 3.5s; 
+            font-size: 25px; 
+        }
+    </style>
 </head>
-<body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="nav-content">
-                <div class="logo">
-                    <span class="logo-text">Meetly</span>
-                    <span class="beta-badge">BETA</span>
+<body class="font-urbanist text-gray-900 antialiased paper-texture min-h-screen">
+    <!-- Top Navigation Bar -->
+    <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-md border-b border-gray-200/50 z-50" id="navbar">
+        <div class="max-w-6xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Logo (hidden initially, shows on scroll) -->
+                <a href="#" class="flex items-center opacity-0 transform -translate-x-4 transition-all duration-300" id="nav-logo">
+                    <div class="audio-wave mr-3">
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                    </div>
+                    <h1 class="text-xl font-bold text-soft-black">Meetly</h1>
+                </a>
+                
+                <!-- Navigation Links -->
+                <div class="flex items-center gap-8">
+                    <a href="#features" class="text-gray-600 hover:text-soft-black transition-colors duration-200 font-medium">Features</a>
+                    <a href="#plans" class="text-gray-600 hover:text-soft-black transition-colors duration-200 font-medium">Plans</a>
+                    <a href="blog.html" class="text-gray-600 hover:text-soft-black transition-colors duration-200 font-medium">Blog</a>
+                    <a href="#" class="inline-flex items-center text-gray-600 hover:text-soft-black transition-colors duration-200 font-medium">
+                        <svg class="w-4 h-4 mr-2" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                        </svg>
+                        Download
+                    </a>
                 </div>
-                <div class="nav-links">
-                    <a href="#features">Features</a>
-                    <a href="#use-cases">Use Cases</a>
-                    <a href="privacy.html">Privacy</a>
-                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden p-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <div class="badge-container">
-                        <span class="limited-badge">🎯 Limited Time: FREE Download</span>
-                    </div>
-                    <h1 class="hero-title">
-                        Your Meetings,<br>
-                        <span class="gradient-text">100% Private</span>
-                    </h1>
-                    <p class="hero-subtitle">
-                        Professional meeting transcription powered by OpenAI's Whisper. 
-                        Everything stays on your device. No cloud. No compromise.
-                    </p>
-                    <div class="hero-features">
-                        <div class="feature-pill">
-                            <svg class="feature-icon" width="16" height="16" viewBox="0 0 24 24" fill="none">
-                                <path d="M9 11L12 14L22 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                            </svg>
-                            <span>90+ Languages</span>
+    <!-- Hero Section - Full Screen -->
+    <header class="min-h-screen flex items-center justify-center px-6 pt-20 pb-8 relative overflow-hidden">
+        <!-- Floating multilingual text -->
+        <div class="floating-text">Record your voice</div>
+        <div class="floating-text">Enregistrez votre voix</div>
+        <div class="floating-text">Graba tu voz</div>
+        <div class="floating-text">録音してください</div>
+        <div class="floating-text">Aufnahme starten</div>
+        <div class="floating-text">नमस्ते</div>
+        <div class="floating-text">வணக்கம்</div>
+        <div class="floating-text">ਸਤ ਸ੍ਰੀ ਅਕਾਲ</div>
+        <div class="floating-text">你好</div>
+        <div class="floating-text">안녕하세요</div>
+        
+        <div class="max-w-3xl mx-auto text-center relative z-10">
+            <!-- Logo -->
+            <div class="flex items-center justify-center mb-16">
+                <div class="audio-wave mr-4">
+                    <div class="wave-bar"></div>
+                    <div class="wave-bar"></div>
+                    <div class="wave-bar"></div>
+                    <div class="wave-bar"></div>
+                    <div class="wave-bar"></div>
+                    <div class="wave-bar"></div>
+                    <div class="wave-bar"></div>
+                </div>
+                <h1 class="text-5xl font-bold text-soft-black">Meetly</h1>
+            </div>
+            
+            <!-- Headline -->
+            <h2 class="text-6xl md:text-7xl font-bold leading-tight mb-12 text-soft-black">
+                Private AI Voice Recorder
+            </h2>
+            
+            <!-- Subheading -->
+            <p class="text-lg md:text-xl text-gray-600 mb-16 font-medium leading-relaxed">
+                Unlimited multi-language recording with built-in AI summarization.<br>
+                Nothing leaves your device.
+            </p>
+            
+            <!-- App Store CTA -->
+            <a href="#" class="inline-flex items-center bg-soft-black text-white px-10 py-5 rounded-2xl text-xl font-semibold hover:bg-gray-800 transition-all duration-200 hover:-translate-y-1 shadow-lg">
+                <svg class="w-7 h-7 mr-4" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                </svg>
+                Download on the App Store
+            </a>
+            
+            <!-- Free Users Text -->
+            <p class="text-lg text-gray-600 mt-6 font-medium">Free for first 1,000 users</p>
+        </div>
+    </header>
+
+    <!-- Workflow Section -->
+    <section class="py-24 scroll-reveal" id="workflow">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- iPhone on Left -->
+                <div class="flex justify-center lg:justify-end">
+                    <div class="relative">
+                        <!-- iPhone 14 Pro Max Frame - Larger -->
+                        <div class="relative w-96 h-[800px] bg-soft-black rounded-[64px] p-4 shadow-2xl">
+                            <!-- Dynamic Island -->
+                            <div class="absolute top-8 left-1/2 transform -translate-x-1/2 w-36 h-9 bg-soft-black rounded-full z-10"></div>
+                            
+                            <!-- Screen -->
+                            <div class="w-full h-full bg-gray-900 rounded-[52px] overflow-hidden relative">
+                                <!-- Workflow GIFs -->
+                                <img src="screenshots/record.gif" alt="Record voice" class="workflow-gif absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-500" data-step="record">
+                                <img src="screenshots/transcribe.gif" alt="Transcribe and translate" class="workflow-gif absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500" data-step="transcribe">
+                                <img src="screenshots/summarise.gif" alt="AI summarization" class="workflow-gif absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500" data-step="summarise">
+                                <img src="screenshots/share.gif" alt="Share results" class="workflow-gif absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500" data-step="share">
+                            </div>
                         </div>
-                        <div class="feature-pill">
-                            <svg class="feature-icon" width="16" height="16" viewBox="0 0 24 24" fill="none">
-                                <path d="M12 2L2 7V12C2 16.5 5 20.5 12 22C19 20.5 22 16.5 22 12V7L12 2Z" stroke="currentColor" stroke-width="2"/>
-                            </svg>
-                            <span>Background Recording</span>
-                        </div>
-                        <div class="feature-pill">
-                            <svg class="feature-icon" width="16" height="16" viewBox="0 0 24 24" fill="none">
-                                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
-                                <path d="M12 6V12L16 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                            </svg>
-                            <span>Hours of Recording</span>
-                        </div>
-                    </div>
-                    <div class="cta-container">
-                        <a href="#" class="cta-button">
-                            <svg class="apple-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.09997 22C7.78997 22.05 6.79997 20.68 5.95997 19.47C4.24997 16.97 2.93997 12.45 4.69997 9.39C5.56997 7.87 7.12997 6.91 8.81997 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.1 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z"/>
-                            </svg>
-                            Download on App Store
-                        </a>
-                        <p class="cta-note">
-                            <span class="warning-icon">⚡</span>
-                            Beta release ends soon. Future versions will have restrictions.
-                        </p>
                     </div>
                 </div>
-                <div class="hero-visual">
-                    <div class="hero-demo">
-                        <img src="how_it_works.gif" alt="Meetly in Action - Record, Transcribe, Share" class="hero-gif">
+                
+                <!-- Steps on Right -->
+                <div class="space-y-8">
+                    <div class="workflow-step active cursor-pointer" data-step="record">
+                        <div class="flex items-center mb-3">
+                            <div class="w-10 h-10 bg-soft-black text-white rounded-lg flex items-center justify-center font-bold text-lg mr-4 step-number">1</div>
+                            <h3 class="text-2xl font-bold step-title text-soft-black">Record</h3>
+                        </div>
+                        <p class="text-gray-600 text-lg step-description">Record unlimited hours in any environment</p>
+                    </div>
+                    
+                    <div class="workflow-step cursor-pointer" data-step="transcribe">
+                        <div class="flex items-center mb-3">
+                            <div class="w-10 h-10 bg-gray-300 text-gray-600 rounded-lg flex items-center justify-center font-bold text-lg mr-4 step-number">2</div>
+                            <h3 class="text-2xl font-bold text-gray-400 step-title">Transcribe</h3>
+                        </div>
+                        <p class="text-gray-400 text-lg step-description">Transcribe from 70+ languages using OpenAI Whisper</p>
+                    </div>
+                    
+                    <div class="workflow-step cursor-pointer" data-step="summarise">
+                        <div class="flex items-center mb-3">
+                            <div class="w-10 h-10 bg-gray-300 text-gray-600 rounded-lg flex items-center justify-center font-bold text-lg mr-4 step-number">3</div>
+                            <h3 class="text-2xl font-bold text-gray-400 step-title">Summarize</h3>
+                        </div>
+                        <p class="text-gray-400 text-lg step-description">Get AI-powered intelligent summaries and key insights</p>
+                    </div>
+                    
+                    <div class="workflow-step cursor-pointer" data-step="share">
+                        <div class="flex items-center mb-3">
+                            <div class="w-10 h-10 bg-gray-300 text-gray-600 rounded-lg flex items-center justify-center font-bold text-lg mr-4 step-number">4</div>
+                            <h3 class="text-2xl font-bold text-gray-400 step-title">Share</h3>
+                        </div>
+                        <p class="text-gray-400 text-lg step-description">Export in multiple formats and share instantly</p>
                     </div>
                 </div>
             </div>
@@ -92,273 +340,171 @@
     </section>
 
     <!-- Features Section -->
-    <section id="features" class="features">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Enterprise-Grade Privacy</h2>
-                <p class="section-subtitle">Your confidential meetings never leave your device</p>
-            </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon-container">
-                        <svg class="feature-main-icon" width="32" height="32" viewBox="0 0 24 24" fill="none">
-                            <path d="M12 15V17M6 21H18C19.1 21 20 20.1 20 19V10C20 8.9 19.1 8 18 8H6C4.9 8 4 8.9 4 10V19C4 20.1 4.9 21 6 21ZM16 8V6C16 3.79 14.21 2 12 2C9.79 2 8 3.79 8 6V8H16Z" stroke="url(#gradient)" stroke-width="2" stroke-linecap="round"/>
-                        </svg>
-                    </div>
-                    <h3>Zero Cloud Storage</h3>
-                    <p>All transcription happens locally. Your sensitive meetings never touch external servers.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon-container">
-                        <svg class="feature-main-icon" width="32" height="32" viewBox="0 0 24 24" fill="none">
-                            <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="url(#gradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M2 17L12 22L22 17" stroke="url(#gradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M2 12L12 17L22 12" stroke="url(#gradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <h3>Advanced Compression</h3>
-                    <p>Record hours of meetings with our state-of-the-art audio compression. Crystal clear at 48kHz.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon-container">
-                        <svg class="feature-main-icon" width="32" height="32" viewBox="0 0 24 24" fill="none">
-                            <circle cx="12" cy="12" r="10" stroke="url(#gradient)" stroke-width="2"/>
-                            <path d="M12 6V12L16 14" stroke="url(#gradient)" stroke-width="2" stroke-linecap="round"/>
-                        </svg>
-                    </div>
-                    <h3>Real-Time Processing</h3>
-                    <p>Powered by OpenAI's Whisper. Get accurate transcriptions in seconds, not minutes.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon-container">
-                        <svg class="feature-main-icon" width="32" height="32" viewBox="0 0 24 24" fill="none">
-                            <path d="M3 5H21M3 5C3 4.45 3.45 4 4 4H20C20.55 4 21 4.45 21 5M3 5V19C3 19.55 3.45 20 4 20H20C20.55 20 21 19.55 21 19V5" stroke="url(#gradient)" stroke-width="2"/>
-                            <path d="M8 10H16M8 14H13" stroke="url(#gradient)" stroke-width="2" stroke-linecap="round"/>
-                        </svg>
-                    </div>
-                    <h3>75+ Languages</h3>
-                    <p>Detect and transcribe in Hindi, Chinese, Arabic, and 72+ more languages. Auto-translate to English.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Use Cases Section -->
-    <section id="use-cases" class="use-cases">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Built for Professionals</h2>
-                <p class="section-subtitle">Where privacy and accuracy matter most</p>
-            </div>
-            <div class="use-cases-grid">
-                <div class="use-case-card">
-                    <div class="use-case-icon">⚖️</div>
-                    <h3>Legal Professionals</h3>
-                    <p>Client meetings, depositions, and case discussions stay confidential. No cloud risk for sensitive legal matters.</p>
-                </div>
-                <div class="use-case-card">
-                    <div class="use-case-icon">🏥</div>
-                    <h3>Healthcare Providers</h3>
-                    <p>HIPAA concerns? Patient consultations remain on-device. Perfect for medical professionals prioritizing privacy.</p>
-                </div>
-                <div class="use-case-card">
-                    <div class="use-case-icon">💼</div>
-                    <h3>C-Suite Executives</h3>
-                    <p>Board meetings, M&A discussions, strategic planning - all transcribed without corporate espionage risks.</p>
-                </div>
-                <div class="use-case-card">
-                    <div class="use-case-icon">🔬</div>
-                    <h3>Researchers</h3>
-                    <p>Interview transcriptions for qualitative research. Maintain participant confidentiality with local processing.</p>
-                </div>
-                <div class="use-case-card">
-                    <div class="use-case-icon">📊</div>
-                    <h3>Financial Advisors</h3>
-                    <p>Client portfolio discussions and investment strategies transcribed securely without compliance concerns.</p>
-                </div>
-                <div class="use-case-card">
-                    <div class="use-case-icon">🎯</div>
-                    <h3>HR Professionals</h3>
-                    <p>Performance reviews, exit interviews, and sensitive employee discussions with complete confidentiality.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- How It Works Section -->
-    <section class="how-it-works">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">How It Works</h2>
-                <p class="section-subtitle">Professional meeting transcription in 3 simple steps</p>
-            </div>
+    <section class="py-32 scroll-reveal" id="features">
+        <div class="max-w-5xl mx-auto px-6 text-center">
+            <h2 class="text-4xl md:text-5xl font-bold mb-20 text-soft-black">Key Features</h2>
             
-            <div class="how-it-works-content">
-                <div class="workflow-steps">
-                    <div class="step-item active" data-step="0">
-                        <div class="step-number">1</div>
-                        <div class="step-content">
-                            <h3>Record</h3>
-                            <p>One tap to start. Continues in background even when phone is locked.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="step-item" data-step="1">
-                        <div class="step-number">2</div>
-                        <div class="step-content">
-                            <h3>Transcribe</h3>
-                            <p>AI automatically converts speech to text in 90+ languages.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="step-item" data-step="2">
-                        <div class="step-number">3</div>
-                        <div class="step-content">
-                            <h3>Share</h3>
-                            <p>Export to messaging apps or AI tools like ChatGPT and Claude.</p>
-                        </div>
-                    </div>
+            <div class="grid md:grid-cols-4 gap-12">
+                <div class="p-8">
+                    <h3 class="text-xl font-semibold mb-4 text-soft-black">OpenAI Whisper</h3>
+                    <p class="text-gray-600 text-base">Industry-leading speech recognition on-device</p>
                 </div>
                 
-                <div class="demo-carousel-container">
-                    <div class="iphone-mockup">
-                        <div class="demo-carousel" id="demoCarousel">
-                            <div class="carousel-slide active">
-                                <img src="hero_section_images/1.jpeg" alt="Start Recording" class="carousel-image">
-                            </div>
-                            <div class="carousel-slide">
-                                <img src="hero_section_images/2.jpeg" alt="Recording in Progress" class="carousel-image">
-                            </div>
-                            <div class="carousel-slide">
-                                <img src="hero_section_images/3.jpeg" alt="Processing Audio" class="carousel-image">
-                            </div>
-                            <div class="carousel-slide">
-                                <img src="hero_section_images/4.jpeg" alt="Transcription Complete" class="carousel-image">
-                            </div>
-                            <div class="carousel-slide">
-                                <img src="hero_section_images/5.jpeg" alt="Interactive Timeline" class="carousel-image">
-                            </div>
-                            <div class="carousel-slide">
-                                <img src="hero_section_images/6.jpeg" alt="AI Summary" class="carousel-image">
-                            </div>
-                            <div class="carousel-slide">
-                                <img src="hero_section_images/7.jpeg" alt="Share Results" class="carousel-image">
-                            </div>
+                <div class="p-8">
+                    <h3 class="text-xl font-semibold mb-4 text-soft-black">70+ Languages</h3>
+                    <p class="text-gray-600 text-base">Multi-language support with translation</p>
+                </div>
+                
+                <div class="p-8">
+                    <h3 class="text-xl font-semibold mb-4 text-soft-black">Complete Privacy</h3>
+                    <p class="text-gray-600 text-base">All processing happens on your device</p>
+                </div>
+                
+                <div class="p-8">
+                    <h3 class="text-xl font-semibold mb-4 text-soft-black">Background Recording</h3>
+                    <p class="text-gray-600 text-base">Record while using other apps seamlessly</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="py-32 scroll-reveal" id="plans">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 text-soft-black">Simple Pricing</h2>
+                <p class="text-xl text-gray-600">Always free. Lifetime access for early users.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-16">
+                <!-- Free -->
+                <div class="bg-white border-2 border-gray-200 rounded-3xl p-8 text-center hover:shadow-lg transition-all duration-300">
+                    <div class="mb-8">
+                        <h3 class="text-2xl font-bold mb-2 text-soft-black">Free</h3>
+                        <div class="text-4xl font-bold text-soft-black mb-2">$0</div>
+                        <p class="text-sm text-gray-600">Always available</p>
+                    </div>
+                    <ul class="space-y-4 text-left">
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-soft-black mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-gray-700">Unlimited recording</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-soft-black mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-gray-700">Basic transcription</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-soft-black mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-gray-700">5 languages</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Lifetime -->
+                <div class="bg-gray-50 border-2 border-soft-black rounded-3xl p-8 text-center hover:shadow-lg transition-all duration-300 scale-105">
+                    <div class="mb-8">
+                        <h3 class="text-2xl font-bold mb-2 text-soft-black">Lifetime</h3>
+                        <div class="flex items-center justify-center mb-2">
+                            <span class="text-2xl text-gray-400 line-through mr-2">$99</span>
+                            <span class="text-4xl font-bold text-soft-black">Free</span>
                         </div>
+                        <p class="text-sm text-red-600 font-medium">First 1,000 users only</p>
+                        <p class="text-xs text-gray-500 mt-1">Then $99 one-time</p>
                     </div>
-                    <div class="carousel-indicators">
-                        <span class="indicator active" data-slide="0"></span>
-                        <span class="indicator" data-slide="1"></span>
-                        <span class="indicator" data-slide="2"></span>
-                        <span class="indicator" data-slide="3"></span>
-                        <span class="indicator" data-slide="4"></span>
-                        <span class="indicator" data-slide="5"></span>
-                        <span class="indicator" data-slide="6"></span>
+                    <ul class="space-y-4 text-left">
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-soft-black mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-gray-700">Everything in Free</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-soft-black mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-gray-700">AI summarization</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-soft-black mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-gray-700">70+ languages</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-soft-black mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-gray-700">Premium export formats</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Yearly -->
+                <div class="bg-white border-2 border-gray-200 rounded-3xl p-8 text-center hover:shadow-lg transition-all duration-300">
+                    <div class="mb-8">
+                        <h3 class="text-2xl font-bold mb-2 text-soft-black">Yearly</h3>
+                        <div class="text-4xl font-bold text-soft-black mb-2">$30</div>
+                        <p class="text-sm text-gray-600">Per year</p>
                     </div>
+                    <ul class="space-y-4 text-left">
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-soft-black mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-gray-700">Everything in Lifetime</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-soft-black mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-gray-700">Priority support</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-soft-black mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-gray-700">Early access to features</span>
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 text-soft-black mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span class="text-gray-700">Cancel anytime</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
             
-            <!-- Key Features Grid -->
-            <div class="key-features-grid">
-                <div class="key-feature">
-                    <div class="key-feature-icon">🎙️</div>
-                    <h4>Background Recording</h4>
-                    <p>Continues recording even when app is closed or phone is locked</p>
-                </div>
-                
-                <div class="key-feature">
-                    <div class="key-feature-icon">🌍</div>
-                    <h4>90+ Languages</h4>
-                    <p>Detect and transcribe any language, auto-translate to English</p>
-                </div>
-                
-                <div class="key-feature">
-                    <div class="key-feature-icon">⏰</div>
-                    <h4>Hours of Recording</h4>
-                    <p>Advanced compression for extended meetings without storage issues</p>
-                </div>
-                
-                <div class="key-feature">
-                    <div class="key-feature-icon">🔒</div>
-                    <h4>100% Local</h4>
-                    <p>All processing happens on your device, no cloud uploads ever</p>
-                </div>
-                
-                <div class="key-feature">
-                    <div class="key-feature-icon">🤖</div>
-                    <h4>AI Summaries</h4>
-                    <p>Generate intelligent meeting summaries and action items</p>
-                </div>
-                
-                <div class="key-feature">
-                    <div class="key-feature-icon">📱</div>
-                    <h4>Easy Sharing</h4>
-                    <p>Share via messaging apps or export to ChatGPT, Claude, and more</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="final-cta">
-        <div class="container">
-            <div class="cta-content">
-                <h2 class="cta-title">Download Free During Beta</h2>
-                <p class="cta-subtitle">Join thousands of professionals who've already secured their free copy</p>
-                <div class="countdown-container">
-                    <div class="countdown-item">
-                        <span class="countdown-number" id="days">14</span>
-                        <span class="countdown-label">Days</span>
-                    </div>
-                    <div class="countdown-item">
-                        <span class="countdown-number" id="hours">08</span>
-                        <span class="countdown-label">Hours</span>
-                    </div>
-                    <div class="countdown-item">
-                        <span class="countdown-number" id="minutes">42</span>
-                        <span class="countdown-label">Minutes</span>
-                    </div>
-                </div>
-                <a href="#" class="cta-button-large">
-                    <svg class="apple-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 22 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.09997 22C7.78997 22.05 6.79997 20.68 5.95997 19.47C4.24997 16.97 2.93997 12.45 4.69997 9.39C5.56997 7.87 7.12997 6.91 8.81997 6.88C10.1 6.86 11.32 7.75 12.11 7.75C12.89 7.75 14.37 6.68 15.92 6.84C16.57 6.87 18.39 7.1 19.56 8.82C19.47 8.88 17.39 10.1 17.41 12.63C17.44 15.65 20.06 16.66 20.09 16.67C20.06 16.74 19.67 18.11 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z"/>
+            <!-- Single Download CTA -->
+            <div class="text-center">
+                <a href="#" class="inline-flex items-center bg-soft-black text-white px-12 py-6 rounded-2xl text-xl font-semibold hover:bg-gray-800 transition-all duration-200 hover:-translate-y-1 shadow-lg">
+                    <svg class="w-7 h-7 mr-4" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
                     </svg>
-                    Get Meetly Free
+                    Download on the App Store
                 </a>
-                <p class="final-note">Future versions will require subscription • No credit card needed</p>
+                <p class="text-gray-600 mt-4 text-lg">All features available through in-app purchases</p>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <span class="logo-text">Meetly</span>
-                    <p class="footer-tagline">Your meetings, your privacy.</p>
-                </div>
-                <div class="footer-links">
-                    <a href="privacy.html">Privacy Policy</a>
-                    <a href="support.html">Support</a>
-                    <a href="mailto:saubhagya.awaneesh@gmail.com">Contact</a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Meetly. All rights reserved.</p>
-            </div>
+    <footer class="py-12 border-t border-gray-200">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <nav class="flex justify-center gap-6 mb-4">
+                <a href="contact.html" class="text-gray-600 hover:text-soft-black transition-colors duration-200 text-sm">Contact</a>
+                <a href="privacy.html" class="text-gray-600 hover:text-soft-black transition-colors duration-200 text-sm">Privacy</a>
+                <a href="blog.html" class="text-gray-600 hover:text-soft-black transition-colors duration-200 text-sm">Blog</a>
+            </nav>
+            <p class="text-gray-500 text-xs">&copy; 2025 Meetly</p>
         </div>
     </footer>
-
-    <!-- SVG Gradients -->
-    <svg width="0" height="0">
-        <defs>
-            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" style="stop-color:#00F260;stop-opacity:1" />
-                <stop offset="100%" style="stop-color:#0575E6;stop-opacity:1" />
-            </linearGradient>
-        </defs>
-    </svg>
 
     <script src="script.js"></script>
 </body>

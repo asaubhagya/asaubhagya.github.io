@@ -4,168 +4,258 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Policy - Meetly</title>
-    <meta name="description" content="Meetly Privacy Policy - Learn how we protect your data with on-device processing and zero cloud storage.">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="privacy-styles.css">
+    <meta name="description" content="Meetly Privacy Policy - Learn how we protect your privacy with on-device processing and zero data collection.">
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'urbanist': ['Urbanist', 'sans-serif'],
+                    },
+                    colors: {
+                        'soft-black': '#1a1a1a',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .paper-texture {
+            background-color: #fefefe;
+            background-image: 
+                /* Subtle paper grain */
+                radial-gradient(circle at 25% 25%, rgba(0, 0, 0, 0.008) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(0, 0, 0, 0.008) 0%, transparent 50%),
+                radial-gradient(circle at 75% 25%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 25% 75%, rgba(0, 0, 0, 0.005) 0%, transparent 50%),
+                /* Very subtle fiber texture */
+                linear-gradient(45deg, transparent 48%, rgba(0, 0, 0, 0.003) 49%, rgba(0, 0, 0, 0.003) 51%, transparent 52%),
+                linear-gradient(-45deg, transparent 48%, rgba(0, 0, 0, 0.002) 49%, rgba(0, 0, 0, 0.002) 51%, transparent 52%),
+                /* Subtle noise pattern */
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(0, 0, 0, 0.002) 2px,
+                    rgba(0, 0, 0, 0.002) 4px
+                ),
+                repeating-linear-gradient(
+                    90deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(0, 0, 0, 0.001) 2px,
+                    rgba(0, 0, 0, 0.001) 4px
+                );
+            background-size: 
+                200px 200px,
+                180px 180px,
+                220px 220px,
+                160px 160px,
+                100px 100px,
+                120px 120px,
+                8px 8px,
+                8px 8px;
+        }
+        
+        .audio-wave {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+        }
+        
+        .wave-bar {
+            width: 3px;
+            background: linear-gradient(to top, #4a4a4a, #2a2a2a);
+            border-radius: 2px;
+            animation: wave 1.5s ease-in-out infinite;
+        }
+        
+        .wave-bar:nth-child(1) { height: 20px; animation-delay: 0s; }
+        .wave-bar:nth-child(2) { height: 30px; animation-delay: 0.1s; }
+        .wave-bar:nth-child(3) { height: 25px; animation-delay: 0.2s; }
+        .wave-bar:nth-child(4) { height: 35px; animation-delay: 0.3s; }
+        .wave-bar:nth-child(5) { height: 20px; animation-delay: 0.4s; }
+        .wave-bar:nth-child(6) { height: 30px; animation-delay: 0.5s; }
+        .wave-bar:nth-child(7) { height: 25px; animation-delay: 0.6s; }
+        
+        @keyframes wave {
+            0%, 100% { transform: scaleY(1); }
+            50% { transform: scaleY(0.3); }
+        }
+    </style>
 </head>
-<body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="nav-content">
-                <div class="logo">
-                    <a href="index.html" class="logo-link">
-                        <span class="logo-text">Meetly</span>
+<body class="font-urbanist text-gray-900 antialiased paper-texture min-h-screen">
+    <!-- Top Navigation Bar -->
+    <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-md border-b border-gray-200/50 z-50">
+        <div class="max-w-6xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center">
+                    <div class="audio-wave mr-3">
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                    </div>
+                    <h1 class="text-2xl font-bold text-soft-black">Meetly</h1>
+                </a>
+                
+                <!-- Navigation Links -->
+                <div class="flex items-center gap-8">
+                    <a href="index.html#features" class="text-gray-600 hover:text-soft-black transition-colors duration-200 font-medium">Features</a>
+                    <a href="index.html#plans" class="text-gray-600 hover:text-soft-black transition-colors duration-200 font-medium">Plans</a>
+                    <a href="blog.html" class="text-gray-600 hover:text-soft-black transition-colors duration-200 font-medium">Blog</a>
+                    <a href="#" class="inline-flex items-center text-gray-600 hover:text-soft-black transition-colors duration-200 font-medium">
+                        <svg class="w-4 h-4 mr-2" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                        </svg>
+                        Download
                     </a>
-                </div>
-                <div class="nav-links">
-                    <a href="index.html">Home</a>
-                    <a href="index.html#features">Features</a>
-                    <a href="index.html#use-cases">Use Cases</a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- Privacy Policy Content -->
-    <section class="privacy-content">
-        <div class="container">
-            <div class="privacy-header">
-                <h1 class="privacy-title">Privacy Policy</h1>
-                <p class="privacy-subtitle">Your privacy is our priority. Everything stays on your device.</p>
-                <p class="last-updated">Last updated: December 2024</p>
+    <!-- Main Content -->
+    <main class="pt-24 pb-24">
+        <div class="max-w-4xl mx-auto px-6">
+            <!-- Header -->
+            <div class="text-center mb-16">
+                <h1 class="text-4xl md:text-5xl font-bold text-soft-black mb-6">Privacy Policy</h1>
+                <p class="text-xl text-gray-600">Your privacy is our top priority</p>
+                <p class="text-sm text-gray-500 mt-4">Last updated: May 2025</p>
             </div>
 
-            <div class="privacy-body">
-                <section class="privacy-section">
-                    <h2>Introduction</h2>
-                    <p>Meetly ("we", "our", or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and safeguard information when you use our mobile application.</p>
-                </section>
+            <!-- Privacy Content -->
+            <div class="prose prose-lg max-w-none">
+                <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 mb-8">
+                    <h2 class="text-2xl font-bold text-soft-black mb-4">Our Commitment to Privacy</h2>
+                    <p class="text-gray-700 leading-relaxed">
+                        Meetly is designed with privacy at its core. We believe your voice recordings and personal data should remain yours. 
+                        That's why we've built Meetly to process everything on your device, ensuring nothing leaves your control.
+                    </p>
+                </div>
 
-                <section class="privacy-section">
-                    <h2>Information We Collect</h2>
-                    
-                    <div class="privacy-subsection">
-                        <h3>Audio Data</h3>
-                        <ul>
-                            <li><strong>Microphone Access:</strong> Meetly requests access to your device's microphone to record meetings and conversations for transcription purposes.</li>
-                            <li><strong>Audio Processing:</strong> All audio recordings are processed locally on your device using on-device speech recognition technology.</li>
-                            <li><strong>Storage:</strong> Audio files and transcriptions are stored locally on your device and are not transmitted to external servers.</li>
+                <div class="space-y-8">
+                    <section class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+                        <h2 class="text-2xl font-bold text-soft-black mb-4">1. Information We Don't Collect</h2>
+                        <p class="text-gray-700 leading-relaxed mb-4">
+                            Meetly is built on a foundation of privacy-by-design. We deliberately do NOT collect:
+                        </p>
+                        <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
+                            <li>Voice recordings or audio files</li>
+                            <li>Transcribed text content</li>
+                            <li>AI-generated summaries</li>
+                            <li>Personal conversations or meeting content</li>
+                            <li>Location data or device identifiers</li>
+                            <li>Contact information or personal details</li>
                         </ul>
-                    </div>
+                    </section>
 
-                    <div class="privacy-subsection">
-                        <h3>Device Information</h3>
-                        <ul>
-                            <li><strong>App Usage:</strong> We may collect basic app usage statistics to improve performance and user experience.</li>
-                            <li><strong>Device Type:</strong> Information about your device type and operating system version for compatibility purposes.</li>
+                    <section class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+                        <h2 class="text-2xl font-bold text-soft-black mb-4">2. On-Device Processing</h2>
+                        <p class="text-gray-700 leading-relaxed mb-4">
+                            All audio processing happens entirely on your device using:
+                        </p>
+                        <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
+                            <li><strong>OpenAI Whisper:</strong> Speech recognition runs locally on your device</li>
+                            <li><strong>Local AI Models:</strong> Summarization and analysis happen offline</li>
+                            <li><strong>Device Storage:</strong> All recordings stay in your device's secure storage</li>
+                            <li><strong>No Cloud Processing:</strong> Your data never leaves your device</li>
                         </ul>
-                    </div>
-                </section>
+                    </section>
 
-                <section class="privacy-section">
-                    <h2>How We Use Information</h2>
-                    <ul>
-                        <li><strong>Transcription:</strong> Audio data is used solely to provide speech-to-text transcription services.</li>
-                        <li><strong>AI Analysis:</strong> Transcribed text may be processed locally to generate meeting summaries and insights.</li>
-                        <li><strong>App Improvement:</strong> Anonymous usage data helps us improve app functionality and performance.</li>
-                    </ul>
-                </section>
+                    <section class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+                        <h2 class="text-2xl font-bold text-soft-black mb-4">3. Minimal Data Collection</h2>
+                        <p class="text-gray-700 leading-relaxed mb-4">
+                            We only collect the absolute minimum required for app functionality:
+                        </p>
+                        <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
+                            <li><strong>App Usage Analytics:</strong> Basic usage patterns to improve the app (anonymized)</li>
+                            <li><strong>Crash Reports:</strong> Technical diagnostics to fix bugs (no personal data)</li>
+                            <li><strong>Purchase Information:</strong> Only through Apple's App Store (we don't see payment details)</li>
+                        </ul>
+                    </section>
 
-                <section class="privacy-section">
-                    <h2>Data Storage and Security</h2>
-                    <div class="highlight-box">
-                        <div class="highlight-icon">🔒</div>
-                        <div class="highlight-content">
-                            <h4>100% On-Device Processing</h4>
-                            <p>All personal data, including audio recordings and transcriptions, is stored locally on your device. We do not upload your audio recordings or transcriptions to cloud servers.</p>
+                    <section class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+                        <h2 class="text-2xl font-bold text-soft-black mb-4">4. Data Sharing</h2>
+                        <p class="text-gray-700 leading-relaxed">
+                            We do not sell, trade, or share your personal information with third parties. Since we don't collect your voice data, 
+                            there's nothing sensitive to share. Any anonymized analytics are used solely for improving app performance and user experience.
+                        </p>
+                    </section>
+
+                    <section class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+                        <h2 class="text-2xl font-bold text-soft-black mb-4">5. Your Rights and Control</h2>
+                        <p class="text-gray-700 leading-relaxed mb-4">You have complete control over your data:</p>
+                        <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
+                            <li><strong>Delete Recordings:</strong> Remove any recording directly from the app</li>
+                            <li><strong>Export Data:</strong> Export your recordings in multiple formats</li>
+                            <li><strong>Opt-out Analytics:</strong> Disable usage analytics in app settings</li>
+                            <li><strong>Data Portability:</strong> Your data remains accessible to you at all times</li>
+                        </ul>
+                    </section>
+
+                    <section class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+                        <h2 class="text-2xl font-bold text-soft-black mb-4">6. Security Measures</h2>
+                        <p class="text-gray-700 leading-relaxed mb-4">
+                            We implement industry-standard security practices:
+                        </p>
+                        <ul class="list-disc list-inside text-gray-700 space-y-2 ml-4">
+                            <li><strong>Local Encryption:</strong> All recordings are encrypted on your device</li>
+                            <li><strong>Secure Storage:</strong> Data stored in iOS secure keychain and sandboxed storage</li>
+                            <li><strong>No Network Transmission:</strong> Audio data never transmitted over the internet</li>
+                            <li><strong>Regular Updates:</strong> Security patches delivered through app updates</li>
+                        </ul>
+                    </section>
+
+                    <section class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+                        <h2 class="text-2xl font-bold text-soft-black mb-4">7. Children's Privacy</h2>
+                        <p class="text-gray-700 leading-relaxed">
+                            Meetly is designed to be safe for users of all ages. Since we don't collect personal information or voice data, 
+                            there are no special privacy concerns for children. However, we recommend parental guidance for users under 13.
+                        </p>
+                    </section>
+
+                    <section class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+                        <h2 class="text-2xl font-bold text-soft-black mb-4">8. Changes to This Policy</h2>
+                        <p class="text-gray-700 leading-relaxed">
+                            We may update this privacy policy to reflect changes in our practices or for legal compliance. 
+                            Any changes will be posted on this page with an updated "Last modified" date. We encourage you to review this policy periodically.
+                        </p>
+                    </section>
+
+                    <section class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+                        <h2 class="text-2xl font-bold text-soft-black mb-4">9. Contact Us</h2>
+                        <p class="text-gray-700 leading-relaxed mb-4">
+                            If you have any questions about this privacy policy or our privacy practices, please contact us:
+                        </p>
+                        <div class="bg-gray-50 rounded-lg p-4">
+                            <p class="text-gray-700"><strong>Email:</strong> <a href="mailto:saubhagya.awaneesh@gmail.com" class="text-soft-black hover:underline">saubhagya.awaneesh@gmail.com</a></p>
+                            <p class="text-gray-700"><strong>Website:</strong> <a href="https://asaubhagya.github.io/meetly" class="text-soft-black hover:underline">asaubhagya.github.io/meetly</a></p>
                         </div>
-                    </div>
-                    <ul>
-                        <li><strong>Encryption:</strong> Data stored on your device is protected using iOS security features.</li>
-                        <li><strong>User Control:</strong> You have complete control over your data and can delete recordings at any time.</li>
-                    </ul>
-                </section>
-
-                <section class="privacy-section">
-                    <h2>Data Sharing</h2>
-                    <ul>
-                        <li><strong>No Third-Party Sharing:</strong> We do not share, sell, or rent your personal information to third parties.</li>
-                        <li><strong>User-Initiated Sharing:</strong> You may choose to export or share transcriptions, but this is entirely under your control.</li>
-                        <li><strong>Legal Requirements:</strong> We may disclose information if required by law or to protect our rights.</li>
-                    </ul>
-                </section>
-
-                <section class="privacy-section">
-                    <h2>Your Rights</h2>
-                    <div class="rights-grid">
-                        <div class="right-card">
-                            <h4>Access</h4>
-                            <p>You can access all your data through the app interface.</p>
-                        </div>
-                        <div class="right-card">
-                            <h4>Deletion</h4>
-                            <p>You can delete individual recordings or all data at any time.</p>
-                        </div>
-                        <div class="right-card">
-                            <h4>Control</h4>
-                            <p>You can revoke microphone permissions through iOS Settings.</p>
-                        </div>
-                    </div>
-                </section>
-
-                <section class="privacy-section">
-                    <h2>Children's Privacy</h2>
-                    <p>Meetly is not intended for children under 13 years of age. We do not knowingly collect personal information from children under 13.</p>
-                </section>
-
-                <section class="privacy-section">
-                    <h2>Changes to Privacy Policy</h2>
-                    <p>We may update this Privacy Policy periodically. We will notify users of any material changes through the app or other appropriate means.</p>
-                </section>
-
-                <section class="privacy-section">
-                    <h2>Contact Information</h2>
-                    <p>If you have questions about this Privacy Policy, please contact us at:</p>
-                                    <div class="contact-info">
-                    <p><strong>Email:</strong> <a href="mailto:saubhagya.awaneesh@gmail.com">saubhagya.awaneesh@gmail.com</a></p>
-                        <p><strong>Website:</strong> <a href="https://meetly.app">meetly.app</a></p>
-                    </div>
-                </section>
-
-                <section class="privacy-section">
-                    <h2>Compliance</h2>
-                    <p>This Privacy Policy complies with:</p>
-                    <ul>
-                        <li>Apple App Store Review Guidelines</li>
-                        <li>iOS Privacy Requirements</li>
-                        <li>General Data Protection Regulation (GDPR) where applicable</li>
-                        <li>California Consumer Privacy Act (CCPA) where applicable</li>
-                    </ul>
-                </section>
+                    </section>
+                </div>
             </div>
         </div>
-    </section>
+    </main>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <span class="logo-text">Meetly</span>
-                    <p class="footer-tagline">Your meetings, your privacy.</p>
-                </div>
-                <div class="footer-links">
-                    <a href="index.html">Home</a>
-                    <a href="mailto:saubhagya.awaneesh@gmail.com">Contact</a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Meetly. All rights reserved.</p>
-            </div>
+    <footer class="py-24 border-t border-gray-200">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <nav class="flex justify-center gap-8 mb-8">
+                <a href="contact.html" class="text-gray-600 hover:text-soft-black transition-colors duration-200">Contact</a>
+                <a href="privacy.html" class="text-gray-600 hover:text-soft-black transition-colors duration-200">Privacy</a>
+                <a href="blog.html" class="text-gray-600 hover:text-soft-black transition-colors duration-200">Blog</a>
+            </nav>
+            <p class="text-gray-500 text-sm">&copy; 2025 Meetly</p>
         </div>
     </footer>
 </body>

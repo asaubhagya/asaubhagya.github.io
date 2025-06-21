@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Meetly</title>
+    <meta name="description" content="Contact Meetly - Get in touch for support, feedback, or questions about our private AI voice recorder.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'urbanist': ['Urbanist', 'sans-serif'],
+                    },
+                    colors: {
+                        'soft-black': '#1a1a1a',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .paper-texture {
+            background-color: #fefefe;
+            background-image: 
+                /* Subtle paper grain */
+                radial-gradient(circle at 25% 25%, rgba(0, 0, 0, 0.008) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(0, 0, 0, 0.008) 0%, transparent 50%),
+                radial-gradient(circle at 75% 25%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 25% 75%, rgba(0, 0, 0, 0.005) 0%, transparent 50%),
+                /* Very subtle fiber texture */
+                linear-gradient(45deg, transparent 48%, rgba(0, 0, 0, 0.003) 49%, rgba(0, 0, 0, 0.003) 51%, transparent 52%),
+                linear-gradient(-45deg, transparent 48%, rgba(0, 0, 0, 0.002) 49%, rgba(0, 0, 0, 0.002) 51%, transparent 52%),
+                /* Subtle noise pattern */
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(0, 0, 0, 0.002) 2px,
+                    rgba(0, 0, 0, 0.002) 4px
+                ),
+                repeating-linear-gradient(
+                    90deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(0, 0, 0, 0.001) 2px,
+                    rgba(0, 0, 0, 0.001) 4px
+                );
+            background-size: 
+                200px 200px,
+                180px 180px,
+                220px 220px,
+                160px 160px,
+                100px 100px,
+                120px 120px,
+                8px 8px,
+                8px 8px;
+        }
+        
+        .audio-wave {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+        }
+        
+        .wave-bar {
+            width: 3px;
+            background: linear-gradient(to top, #4a4a4a, #2a2a2a);
+            border-radius: 2px;
+            animation: wave 1.5s ease-in-out infinite;
+        }
+        
+                .wave-bar:nth-child(1) { height: 20px; animation-delay: 0s; }
+        .wave-bar:nth-child(2) { height: 30px; animation-delay: 0.1s; }
+        .wave-bar:nth-child(3) { height: 25px; animation-delay: 0.2s; }
+        .wave-bar:nth-child(4) { height: 35px; animation-delay: 0.3s; }
+        .wave-bar:nth-child(5) { height: 20px; animation-delay: 0.4s; }
+        .wave-bar:nth-child(6) { height: 30px; animation-delay: 0.5s; }
+        .wave-bar:nth-child(7) { height: 25px; animation-delay: 0.6s; }
+        
+        @keyframes wave {
+            0%, 100% { transform: scaleY(1); }
+            50% { transform: scaleY(0.3); }
+        }
+    </style>
+</head>
+<body class="font-urbanist text-gray-900 antialiased paper-texture min-h-screen">
+    <!-- Top Navigation Bar -->
+    <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-md border-b border-gray-200/50 z-50">
+        <div class="max-w-6xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center">
+                    <div class="audio-wave mr-3">
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                    </div>
+                    <h1 class="text-2xl font-bold text-soft-black">Meetly</h1>
+                </a>
+                
+                <!-- Navigation Links -->
+                <div class="flex items-center gap-8">
+                    <a href="index.html#features" class="text-gray-600 hover:text-soft-black transition-colors duration-200 font-medium">Features</a>
+                    <a href="index.html#plans" class="text-gray-600 hover:text-soft-black transition-colors duration-200 font-medium">Plans</a>
+                    <a href="blog.html" class="text-gray-600 hover:text-soft-black transition-colors duration-200 font-medium">Blog</a>
+                    <a href="#" class="inline-flex items-center text-gray-600 hover:text-soft-black transition-colors duration-200 font-medium">
+                        <svg class="w-4 h-4 mr-2" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                        </svg>
+                        Download
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-24 pb-24">
+        <div class="max-w-4xl mx-auto px-6">
+            <!-- Header -->
+            <div class="text-center mb-16">
+                <h1 class="text-4xl md:text-5xl font-bold text-soft-black mb-6">Contact Us</h1>
+                <p class="text-xl text-gray-600">We'd love to hear from you</p>
+            </div>
+
+            <!-- Contact Content -->
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Contact Information -->
+                <div class="space-y-8">
+                    <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+                        <h2 class="text-2xl font-bold text-soft-black mb-6">Get in Touch</h2>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="bg-gray-100 p-3 rounded-lg mr-4">
+                                    <svg class="w-6 h-6 text-soft-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-semibold text-soft-black mb-1">Email</h3>
+                                    <p class="text-gray-600">For support, feedback, or general inquiries</p>
+                                    <a href="mailto:saubhagya.awaneesh@gmail.com" class="text-soft-black font-medium hover:underline">
+                                        saubhagya.awaneesh@gmail.com
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start">
+                                <div class="bg-gray-100 p-3 rounded-lg mr-4">
+                                    <svg class="w-6 h-6 text-soft-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9v-9m0-9v9m0 9c-5 0-9-4-9-9s4-9 9-9"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-semibold text-soft-black mb-1">Website</h3>
+                                    <p class="text-gray-600">Visit our main website</p>
+                                    <a href="https://asaubhagya.github.io/meetly" class="text-soft-black font-medium hover:underline">
+                                        asaubhagya.github.io/meetly
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start">
+                                <div class="bg-gray-100 p-3 rounded-lg mr-4">
+                                    <svg class="w-6 h-6 text-soft-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-semibold text-soft-black mb-1">Response Time</h3>
+                                    <p class="text-gray-600">We typically respond within 24 hours</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Section -->
+                    <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+                        <h2 class="text-2xl font-bold text-soft-black mb-6">Common Questions</h2>
+                        
+                        <div class="space-y-4">
+                            <div>
+                                <h3 class="font-semibold text-soft-black mb-2">Is my data really private?</h3>
+                                <p class="text-gray-600 text-sm">Yes, all processing happens on your device. Nothing is sent to our servers.</p>
+                            </div>
+                            
+                            <div>
+                                <h3 class="font-semibold text-soft-black mb-2">Which languages are supported?</h3>
+                                <p class="text-gray-600 text-sm">Meetly supports 70+ languages with OpenAI Whisper technology.</p>
+                            </div>
+                            
+                            <div>
+                                <h3 class="font-semibold text-soft-black mb-2">How do I get the lifetime access?</h3>
+                                <p class="text-gray-600 text-sm">Download the app while the first 1,000 user promotion is active.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+                    <h2 class="text-2xl font-bold text-soft-black mb-6">Send us a Message</h2>
+                    
+                    <form class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-semibold text-soft-black mb-2">Name</label>
+                            <input 
+                                type="text" 
+                                id="name" 
+                                name="name" 
+                                class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-soft-black focus:border-transparent transition-colors duration-200"
+                                placeholder="Your name"
+                                required
+                            >
+                        </div>
+
+                        <div>
+                            <label for="email" class="block text-sm font-semibold text-soft-black mb-2">Email</label>
+                            <input 
+                                type="email" 
+                                id="email" 
+                                name="email" 
+                                class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-soft-black focus:border-transparent transition-colors duration-200"
+                                placeholder="your@email.com"
+                                required
+                            >
+                        </div>
+
+                        <div>
+                            <label for="subject" class="block text-sm font-semibold text-soft-black mb-2">Subject</label>
+                            <select 
+                                id="subject" 
+                                name="subject" 
+                                class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-soft-black focus:border-transparent transition-colors duration-200"
+                                required
+                            >
+                                <option value="">Select a topic</option>
+                                <option value="support">Technical Support</option>
+                                <option value="feedback">Feedback</option>
+                                <option value="feature">Feature Request</option>
+                                <option value="billing">Billing Question</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="message" class="block text-sm font-semibold text-soft-black mb-2">Message</label>
+                            <textarea 
+                                id="message" 
+                                name="message" 
+                                rows="5" 
+                                class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-soft-black focus:border-transparent transition-colors duration-200 resize-none"
+                                placeholder="Tell us how we can help you..."
+                                required
+                            ></textarea>
+                        </div>
+
+                        <button 
+                            type="submit" 
+                            class="w-full bg-soft-black text-white px-6 py-4 rounded-xl font-semibold hover:bg-gray-800 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-soft-black focus:ring-offset-2"
+                        >
+                            Send Message
+                        </button>
+                    </form>
+
+                    <p class="text-xs text-gray-500 mt-4 text-center">
+                        We'll get back to you as soon as possible. Usually within 24 hours.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-24 border-t border-gray-200">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <nav class="flex justify-center gap-8 mb-8">
+                <a href="contact.html" class="text-gray-600 hover:text-soft-black transition-colors duration-200">Contact</a>
+                <a href="privacy.html" class="text-gray-600 hover:text-soft-black transition-colors duration-200">Privacy</a>
+                <a href="blog.html" class="text-gray-600 hover:text-soft-black transition-colors duration-200">Blog</a>
+            </nav>
+            <p class="text-gray-500 text-sm">&copy; 2025 Meetly</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple form handling
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Create mailto link
+            const subject = encodeURIComponent(`Meetly Contact: ${data.subject}`);
+            const body = encodeURIComponent(`Name: ${data.name}\nEmail: ${data.email}\n\nMessage:\n${data.message}`);
+            const mailtoLink = `mailto:saubhagya.awaneesh@gmail.com?subject=${subject}&body=${body}`;
+            
+            // Open email client
+            window.location.href = mailtoLink;
+            
+            // Show confirmation
+            alert('Thank you for your message! Your email client should open now.');
+        });
+    </script>
+</body>
+</html> 
