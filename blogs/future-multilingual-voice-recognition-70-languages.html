@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Future of Multilingual Voice Recognition: Supporting 70+ Languages | Meetly Blog</title>
+    <meta name="description" content="Explore the technological breakthrough enabling accurate voice recognition across 70+ languages. Learn about multilingual AI challenges and OpenAI Whisper capabilities.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'urbanist': ['Urbanist', 'sans-serif'],
+                    },
+                    colors: {
+                        'soft-black': '#1a1a1a',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .paper-texture {
+            background-color: #fefefe;
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(0, 0, 0, 0.008) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(0, 0, 0, 0.008) 0%, transparent 50%),
+                radial-gradient(circle at 75% 25%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 25% 75%, rgba(0, 0, 0, 0.005) 0%, transparent 50%),
+                linear-gradient(45deg, transparent 48%, rgba(0, 0, 0, 0.003) 49%, rgba(0, 0, 0, 0.003) 51%, transparent 52%),
+                linear-gradient(-45deg, transparent 48%, rgba(0, 0, 0, 0.002) 49%, rgba(0, 0, 0, 0.002) 51%, transparent 52%),
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 0, 0, 0.002) 2px, rgba(0, 0, 0, 0.002) 4px),
+                repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(0, 0, 0, 0.001) 2px, rgba(0, 0, 0, 0.001) 4px);
+            background-size: 200px 200px, 180px 180px, 220px 220px, 160px 160px, 100px 100px, 120px 120px, 8px 8px, 8px 8px;
+        }
+        
+        .audio-wave {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+        }
+        
+        .wave-bar {
+            width: 3px;
+            background: linear-gradient(to top, #4a4a4a, #2a2a2a);
+            border-radius: 2px;
+            animation: wave 1.5s ease-in-out infinite;
+        }
+        
+        .wave-bar:nth-child(1) { height: 20px; animation-delay: 0s; }
+        .wave-bar:nth-child(2) { height: 30px; animation-delay: 0.1s; }
+        .wave-bar:nth-child(3) { height: 25px; animation-delay: 0.2s; }
+        .wave-bar:nth-child(4) { height: 35px; animation-delay: 0.3s; }
+        .wave-bar:nth-child(5) { height: 20px; animation-delay: 0.4s; }
+        .wave-bar:nth-child(6) { height: 30px; animation-delay: 0.5s; }
+        .wave-bar:nth-child(7) { height: 25px; animation-delay: 0.6s; }
+        
+        @keyframes wave {
+            0%, 100% { transform: scaleY(1); }
+            50% { transform: scaleY(0.3); }
+        }
+    </style>
+</head>
+<body class="font-urbanist text-gray-900 antialiased paper-texture min-h-screen">
+    <!-- Top Navigation Bar -->
+    <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-md border-b border-gray-200/50 z-50">
+        <div class="max-w-6xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <a href="../meetly/index.html" class="flex items-center">
+                    <div class="audio-wave mr-3">
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                        <div class="wave-bar"></div>
+                    </div>
+                    <h1 class="text-2xl font-bold text-soft-black">Meetly</h1>
+                </a>
+                
+                <!-- Navigation Links -->
+                <div class="flex items-center gap-8">
+                    <a href="../meetly/index.html#features" class="text-gray-600 hover:text-soft-black transition-colors duration-200 font-medium">Features</a>
+                    <a href="../meetly/index.html#plans" class="text-gray-600 hover:text-soft-black transition-colors duration-200 font-medium">Plans</a>
+                    <a href="../meetly/blog.html" class="text-gray-600 hover:text-soft-black transition-colors duration-200 font-medium">Blog</a>
+                    <a href="#" class="inline-flex items-center text-gray-600 hover:text-soft-black transition-colors duration-200 font-medium">
+                        <svg class="w-4 h-4 mr-2" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                        </svg>
+                        Download
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-24 pb-24">
+        <div class="max-w-4xl mx-auto px-6">
+            <!-- Back to Blog -->
+            <div class="mb-8">
+                <a href="../meetly/blog.html" class="inline-flex items-center text-gray-600 hover:text-soft-black transition-colors duration-200">
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                    Back to Blog
+                </a>
+            </div>
+
+            <!-- Article Header -->
+            <header class="mb-12">
+                <div class="mb-4">
+                    <span class="inline-block bg-gray-100 text-gray-700 text-sm px-3 py-1 rounded-full">Technology</span>
+                    <span class="text-gray-500 text-sm ml-4">May 5, 2025</span>
+                </div>
+                <h1 class="text-4xl md:text-5xl font-bold text-soft-black mb-6 leading-tight">
+                    The Future of Multilingual Voice Recognition: Supporting 70+ Languages
+                </h1>
+                <p class="text-xl text-gray-600 leading-relaxed">
+                    Explore the technological breakthrough that enables accurate voice recognition across 70+ languages. 
+                    Learn about the challenges of multilingual AI, how OpenAI Whisper handles diverse accents and dialects, 
+                    and what this means for global communication and accessibility.
+                </p>
+            </header>
+
+            <!-- Article Content -->
+            <article class="prose prose-lg max-w-none">
+                <!-- Introduction -->
+                <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-8 mb-12">
+                    <h2 class="text-2xl font-bold text-soft-black mb-4">Breaking Language Barriers with AI</h2>
+                    <p class="text-gray-700 leading-relaxed">
+                        For decades, voice recognition technology struggled with linguistic diversity. Today's breakthrough models like OpenAI's Whisper 
+                        can accurately transcribe speech in over 70 languages, handling accents, dialects, and code-switching with remarkable precision. 
+                        This represents one of AI's most significant achievements in democratizing global communication.
+                    </p>
+                </div>
+
+                <!-- The Challenge Section -->
+                <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 mb-12">
+                    <h2 class="text-3xl font-bold text-soft-black mb-6">The Multilingual Challenge</h2>
+                    <p class="text-gray-700 leading-relaxed mb-6">
+                        Creating AI that understands multiple languages isn't just about scaling up—it's about solving fundamentally different problems:
+                    </p>
+                    
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h3 class="text-xl font-semibold text-soft-black mb-4">Linguistic Complexity</h3>
+                            <ul class="space-y-3 text-gray-700">
+                                <li class="flex items-start">
+                                    <div class="w-2 h-2 bg-soft-black rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                                    <span><strong>Phonetic Variations:</strong> The same word can sound completely different across accents and dialects</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <div class="w-2 h-2 bg-soft-black rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                                    <span><strong>Tonal Languages:</strong> Languages like Mandarin use pitch to convey meaning</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <div class="w-2 h-2 bg-soft-black rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                                    <span><strong>Script Differences:</strong> From Latin to Arabic to Cyrillic writing systems</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-xl font-semibold text-soft-black mb-4">Technical Hurdles</h3>
+                            <ul class="space-y-3 text-gray-700">
+                                <li class="flex items-start">
+                                    <div class="w-2 h-2 bg-soft-black rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                                    <span><strong>Data Scarcity:</strong> Many languages lack sufficient training data</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <div class="w-2 h-2 bg-soft-black rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                                    <span><strong>Code-Switching:</strong> People naturally mix languages in conversation</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <div class="w-2 h-2 bg-soft-black rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                                    <span><strong>Cultural Context:</strong> Understanding cultural references and idioms</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- OpenAI Whisper Section -->
+                <div class="bg-gray-50 rounded-2xl p-8 mb-12">
+                    <h2 class="text-3xl font-bold text-soft-black mb-6">OpenAI Whisper: A Multilingual Breakthrough</h2>
+                    <p class="text-gray-700 leading-relaxed mb-6">
+                        OpenAI's Whisper represents a quantum leap in multilingual speech recognition. Trained on 680,000 hours of multilingual 
+                        and multitask supervised data collected from the web, Whisper demonstrates robust performance across languages and domains.
+                    </p>
+                    
+                    <div class="bg-white rounded-xl p-6 mb-6">
+                        <h3 class="text-xl font-semibold text-soft-black mb-4">What Makes Whisper Special</h3>
+                        <div class="grid md:grid-cols-3 gap-6">
+                            <div class="text-center">
+                                <div class="bg-soft-black text-white w-16 h-16 rounded-xl flex items-center justify-center text-2xl font-bold mx-auto mb-3">99</div>
+                                <h4 class="font-semibold text-soft-black">Languages Supported</h4>
+                                <p class="text-sm text-gray-600">From major languages to regional dialects</p>
+                            </div>
+                            <div class="text-center">
+                                <div class="bg-soft-black text-white w-16 h-16 rounded-xl flex items-center justify-center text-2xl font-bold mx-auto mb-3">95%</div>
+                                <h4 class="font-semibold text-soft-black">Average Accuracy</h4>
+                                <p class="text-sm text-gray-600">Across multiple language pairs</p>
+                            </div>
+                            <div class="text-center">
+                                <div class="bg-soft-black text-white w-16 h-16 rounded-xl flex items-center justify-center text-2xl font-bold mx-auto mb-3">0</div>
+                                <h4 class="font-semibold text-soft-black">Cloud Dependency</h4>
+                                <p class="text-sm text-gray-600">Works completely offline</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-xl p-6">
+                        <h3 class="text-xl font-semibold text-soft-black mb-4">Technical Innovation</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <h4 class="font-semibold text-soft-black mb-2">Transformer Architecture</h4>
+                                <p class="text-gray-700">Uses attention mechanisms to understand context across languages, enabling better accuracy for low-resource languages.</p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-soft-black mb-2">Multitask Learning</h4>
+                                <p class="text-gray-700">Simultaneously trained on speech recognition, translation, and language identification tasks.</p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-soft-black mb-2">Robust Training Data</h4>
+                                <p class="text-gray-700">Diverse internet sources provide real-world speech patterns, accents, and background noise resilience.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Language Coverage Section -->
+                <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 mb-12">
+                    <h2 class="text-3xl font-bold text-soft-black mb-6">Global Language Coverage</h2>
+                    <p class="text-gray-700 leading-relaxed mb-8">
+                        Modern multilingual voice recognition systems support an unprecedented range of languages, 
+                        making technology accessible to billions of speakers worldwide.
+                    </p>
+                    
+                    <div class="grid md:grid-cols-4 gap-6 mb-8">
+                        <div class="text-center p-4 bg-gray-50 rounded-xl">
+                            <h3 class="font-bold text-soft-black text-lg mb-2">Major Languages</h3>
+                            <div class="space-y-1 text-sm text-gray-700">
+                                <div>English, Spanish, French</div>
+                                <div>German, Italian, Portuguese</div>
+                                <div>Russian, Chinese, Japanese</div>
+                                <div>Korean, Arabic, Hindi</div>
+                            </div>
+                        </div>
+                        
+                        <div class="text-center p-4 bg-gray-50 rounded-xl">
+                            <h3 class="font-bold text-soft-black text-lg mb-2">European Languages</h3>
+                            <div class="space-y-1 text-sm text-gray-700">
+                                <div>Dutch, Swedish, Norwegian</div>
+                                <div>Danish, Finnish, Polish</div>
+                                <div>Czech, Hungarian, Romanian</div>
+                                <div>Greek, Turkish, Ukrainian</div>
+                            </div>
+                        </div>
+                        
+                        <div class="text-center p-4 bg-gray-50 rounded-xl">
+                            <h3 class="font-bold text-soft-black text-lg mb-2">Asian Languages</h3>
+                            <div class="space-y-1 text-sm text-gray-700">
+                                <div>Thai, Vietnamese, Indonesian</div>
+                                <div>Malay, Tamil, Telugu</div>
+                                <div>Bengali, Gujarati, Punjabi</div>
+                                <div>Urdu, Farsi, Hebrew</div>
+                            </div>
+                        </div>
+                        
+                        <div class="text-center p-4 bg-gray-50 rounded-xl">
+                            <h3 class="font-bold text-soft-black text-lg mb-2">Emerging Support</h3>
+                            <div class="space-y-1 text-sm text-gray-700">
+                                <div>Swahili, Yoruba, Igbo</div>
+                                <div>Amharic, Somali, Zulu</div>
+                                <div>Welsh, Irish, Basque</div>
+                                <div>Catalan, Gallego, Occitan</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-blue-50 rounded-xl p-6">
+                        <h3 class="font-semibold text-soft-black mb-3">Regional Dialect Support</h3>
+                        <p class="text-gray-700 leading-relaxed mb-4">
+                            Beyond standard languages, modern systems recognize regional variations:
+                        </p>
+                        <ul class="space-y-2 text-gray-700">
+                            <li class="flex items-center"><span class="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>American, British, Australian, and Indian English</li>
+                            <li class="flex items-center"><span class="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>Latin American vs. Iberian Spanish variations</li>
+                            <li class="flex items-center"><span class="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>Simplified vs. Traditional Chinese characters</li>
+                            <li class="flex items-center"><span class="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>Brazilian vs. European Portuguese differences</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Real-World Applications -->
+                <div class="bg-gradient-to-r from-purple-50 to-pink-50 rounded-2xl p-8 mb-12">
+                    <h2 class="text-3xl font-bold text-soft-black mb-6">Real-World Impact</h2>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h3 class="text-xl font-semibold text-soft-black mb-4">Global Business</h3>
+                            <ul class="space-y-3 text-gray-700">
+                                <li class="flex items-start">
+                                    <div class="w-2 h-2 bg-purple-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                                    <span><strong>International Meetings:</strong> Real-time transcription for multinational teams</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <div class="w-2 h-2 bg-purple-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                                    <span><strong>Customer Support:</strong> Automated multilingual call center transcription</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <div class="w-2 h-2 bg-purple-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                                    <span><strong>Content Localization:</strong> Faster video and podcast translation workflows</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-xl font-semibold text-soft-black mb-4">Social Impact</h3>
+                            <ul class="space-y-3 text-gray-700">
+                                <li class="flex items-start">
+                                    <div class="w-2 h-2 bg-pink-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                                    <span><strong>Education Access:</strong> Lecture transcription for non-native speakers</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <div class="w-2 h-2 bg-pink-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                                    <span><strong>Healthcare Equity:</strong> Patient-doctor communication in diverse communities</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <div class="w-2 h-2 bg-pink-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                                    <span><strong>Cultural Preservation:</strong> Documenting endangered languages and dialects</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Technical Challenges -->
+                <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 mb-12">
+                    <h2 class="text-3xl font-bold text-soft-black mb-6">Remaining Challenges</h2>
+                    <div class="space-y-8">
+                        <div>
+                            <h3 class="text-xl font-semibold text-soft-black mb-4">Low-Resource Languages</h3>
+                            <p class="text-gray-700 leading-relaxed mb-4">
+                                Despite impressive progress, many languages still lack sufficient training data. The "long tail" of human languages 
+                                presents ongoing challenges for AI systems.
+                            </p>
+                            <div class="bg-gray-50 rounded-lg p-4">
+                                <p class="text-sm text-gray-600"><strong>Current Limitation:</strong> Of the world's 7,000+ languages, 
+                                robust AI support exists for only about 100-150 languages.</p>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-xl font-semibold text-soft-black mb-4">Cultural Nuances</h3>
+                            <p class="text-gray-700 leading-relaxed mb-4">
+                                Language isn't just about words—it's about culture, context, and meaning. AI systems still struggle with 
+                                culturally-specific references, humor, and implicit communication patterns.
+                            </p>
+                            <div class="bg-gray-50 rounded-lg p-4">
+                                <p class="text-sm text-gray-600"><strong>Example:</strong> Sarcasm, idioms, and cultural references 
+                                often require human-level cultural understanding to transcribe accurately.</p>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-xl font-semibold text-soft-black mb-4">Real-Time Processing</h3>
+                            <p class="text-gray-700 leading-relaxed mb-4">
+                                While accuracy has improved dramatically, real-time multilingual transcription still requires significant 
+                                computational resources, limiting deployment options.
+                            </p>
+                            <div class="bg-gray-50 rounded-lg p-4">
+                                <p class="text-sm text-gray-600"><strong>Trade-off:</strong> Higher accuracy models require more processing power, 
+                                creating tension between quality and accessibility.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Future Outlook -->
+                <div class="bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl p-8 mb-12">
+                    <h2 class="text-3xl font-bold text-soft-black mb-6">The Path Forward</h2>
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="text-xl font-semibold text-soft-black mb-3">Emerging Trends</h3>
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <h4 class="font-semibold text-soft-black mb-2">Few-Shot Learning</h4>
+                                    <p class="text-gray-700 text-sm">AI systems learning new languages from minimal examples, 
+                                    enabling support for previously unsupported languages.</p>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-soft-black mb-2">Cross-Lingual Transfer</h4>
+                                    <p class="text-gray-700 text-sm">Using knowledge from well-supported languages to improve 
+                                    performance on related, low-resource languages.</p>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-soft-black mb-2">Edge Computing</h4>
+                                    <p class="text-gray-700 text-sm">Optimized models running locally on devices, eliminating 
+                                    privacy concerns and internet dependencies.</p>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-soft-black mb-2">Multimodal Understanding</h4>
+                                    <p class="text-gray-700 text-sm">Combining speech with visual cues and context for better 
+                                    understanding of meaning and intent.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white rounded-xl p-6">
+                            <h3 class="text-xl font-semibold text-soft-black mb-4">5-Year Predictions</h3>
+                            <ul class="space-y-3 text-gray-700">
+                                <li class="flex items-center"><span class="w-2 h-2 bg-green-500 rounded-full mr-3"></span>Support for 200+ languages with high accuracy</li>
+                                <li class="flex items-center"><span class="w-2 h-2 bg-green-500 rounded-full mr-3"></span>Real-time translation during multilingual conversations</li>
+                                <li class="flex items-center"><span class="w-2 h-2 bg-green-500 rounded-full mr-3"></span>Emotion and sentiment understanding across cultures</li>
+                                <li class="flex items-center"><span class="w-2 h-2 bg-green-500 rounded-full mr-3"></span>Seamless code-switching recognition in real-time</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Getting Started -->
+                <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 mb-12">
+                    <h2 class="text-3xl font-bold text-soft-black mb-6">Getting Started with Multilingual Voice Recognition</h2>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h3 class="text-xl font-semibold text-soft-black mb-4">For Individuals</h3>
+                            <ul class="space-y-3 text-gray-700">
+                                <li class="flex items-start">
+                                    <div class="w-2 h-2 bg-soft-black rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                                    <span>Choose apps with strong multilingual support like Meetly</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <div class="w-2 h-2 bg-soft-black rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                                    <span>Test accuracy with your specific accent or dialect</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <div class="w-2 h-2 bg-soft-black rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                                    <span>Practice speaking clearly for better recognition</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <div class="w-2 h-2 bg-soft-black rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                                    <span>Use offline-capable tools for privacy and reliability</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-xl font-semibold text-soft-black mb-4">For Organizations</h3>
+                            <ul class="space-y-3 text-gray-700">
+                                <li class="flex items-start">
+                                    <div class="w-2 h-2 bg-soft-black rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                                    <span>Audit current language needs across teams</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <div class="w-2 h-2 bg-soft-black rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                                    <span>Implement pilot programs with key stakeholders</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <div class="w-2 h-2 bg-soft-black rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                                    <span>Consider compliance and data privacy requirements</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <div class="w-2 h-2 bg-soft-black rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                                    <span>Train staff on best practices for multilingual transcription</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Related Resources -->
+                <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 mb-12">
+                    <h2 class="text-3xl font-bold text-soft-black mb-6">Related Resources</h2>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <h3 class="text-lg font-semibold text-soft-black mb-3">Learn More</h3>
+                            <div class="space-y-2">
+                                <a href="../meetly/index.html#features" class="text-soft-black font-medium hover:underline block">→ Meetly's multilingual features</a>
+                                <a href="10-ways-ai-voice-transcription-transform-workflow.html" class="text-soft-black font-medium hover:underline block">→ Productivity with voice transcription</a>
+                                <a href="meetly-vs-otter-voice-memos-rev.html" class="text-soft-black font-medium hover:underline block">→ Compare multilingual voice apps</a>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-soft-black mb-3">Technical Resources</h3>
+                            <div class="space-y-2">
+                                <a href="https://openai.com/research/whisper" class="text-gray-600 hover:text-soft-black transition-colors block" target="_blank" rel="noopener">→ OpenAI Whisper Research Paper</a>
+                                <a href="https://github.com/openai/whisper" class="text-gray-600 hover:text-soft-black transition-colors block" target="_blank" rel="noopener">→ Whisper Open Source Code</a>
+                                <a href="https://aclanthology.org/2022.naacl-main.269/" class="text-gray-600 hover:text-soft-black transition-colors block" target="_blank" rel="noopener">→ Multilingual Speech Recognition Research</a>
+                                <a href="https://www.ethnologue.com/guides/how-many-languages" class="text-gray-600 hover:text-soft-black transition-colors block" target="_blank" rel="noopener">→ Global Language Statistics</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Call to Action -->
+                <div class="bg-gradient-to-r from-soft-black to-gray-800 rounded-2xl p-8 text-white">
+                    <h2 class="text-3xl font-bold mb-6">Experience Multilingual Voice Recognition</h2>
+                    <p class="text-lg leading-relaxed mb-8">
+                        Ready to break down language barriers? Meetly supports 70+ languages with complete privacy—
+                        your multilingual conversations stay on your device.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a href="#" class="bg-white text-soft-black px-6 py-3 rounded-xl font-semibold hover:bg-gray-100 transition-colors duration-200 text-center">
+                            Try Meetly Free
+                        </a>
+                        <a href="../meetly/index.html#plans" class="border border-white text-white px-6 py-3 rounded-xl font-semibold hover:bg-white hover:text-soft-black transition-colors duration-200 text-center">
+                            View Pricing
+                        </a>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-24 border-t border-gray-200">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <nav class="flex justify-center gap-8 mb-8">
+                <a href="../meetly/contact.html" class="text-gray-600 hover:text-soft-black transition-colors duration-200">Contact</a>
+                <a href="../meetly/privacy.html" class="text-gray-600 hover:text-soft-black transition-colors duration-200">Privacy</a>
+                <a href="../meetly/blog.html" class="text-gray-600 hover:text-soft-black transition-colors duration-200">Blog</a>
+                <a href="../meetly/terms.html" class="text-gray-600 hover:text-soft-black transition-colors duration-200">Terms</a>
+            </nav>
+            <p class="text-gray-500 text-sm">&copy; 2025 Meetly</p>
+        </div>
+    </footer>
+</body>
+</html>
