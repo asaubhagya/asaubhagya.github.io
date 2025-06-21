@@ -108,6 +108,14 @@
             animation: cornerFade 6s ease-in-out infinite;
         }
         
+        /* Make floating text much lighter on mobile to reduce clutter */
+        @media (max-width: 768px) {
+            .floating-text {
+                color: rgba(0, 0, 0, 0.04);
+                font-size: 0.8em !important;
+            }
+        }
+        
         @keyframes cornerFade {
             0%, 100% { 
                 opacity: 0;
@@ -201,8 +209,8 @@
                     <h1 class="text-xl font-bold text-soft-black">Meetly</h1>
                 </a>
                 
-                <!-- Navigation Links -->
-                <div class="flex items-center gap-8">
+                <!-- Desktop Navigation Links -->
+                <div class="hidden md:flex items-center gap-8">
                     <a href="#features" class="text-gray-600 hover:text-soft-black transition-colors duration-200 font-medium">Features</a>
                     <a href="#plans" class="text-gray-600 hover:text-soft-black transition-colors duration-200 font-medium">Plans</a>
                     <a href="blog.html" class="text-gray-600 hover:text-soft-black transition-colors duration-200 font-medium">Blog</a>
@@ -215,17 +223,35 @@
                 </div>
                 
                 <!-- Mobile Menu Button -->
-                <button class="md:hidden p-2">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <button class="md:hidden p-2" id="mobile-menu-button">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" id="menu-icon">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
+                    <svg class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" id="close-icon">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
                 </button>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div class="md:hidden hidden" id="mobile-menu">
+                <div class="px-2 pt-2 pb-3 space-y-1 bg-white/95 backdrop-blur-md rounded-b-lg mt-2">
+                    <a href="#features" class="block px-3 py-2 text-gray-600 hover:text-soft-black transition-colors duration-200 font-medium">Features</a>
+                    <a href="#plans" class="block px-3 py-2 text-gray-600 hover:text-soft-black transition-colors duration-200 font-medium">Plans</a>
+                    <a href="blog.html" class="block px-3 py-2 text-gray-600 hover:text-soft-black transition-colors duration-200 font-medium">Blog</a>
+                    <a href="#" class="flex items-center px-3 py-2 text-gray-600 hover:text-soft-black transition-colors duration-200 font-medium">
+                        <svg class="w-4 h-4 mr-2" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                        </svg>
+                        Download
+                    </a>
+                </div>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section - Full Screen -->
-    <header class="min-h-screen flex items-center justify-center px-6 pt-20 pb-8 relative overflow-hidden">
+    <header class="min-h-screen flex items-center justify-center px-6 pt-20 pb-4 md:pb-8 relative overflow-hidden">
         <!-- Floating multilingual text -->
         <div class="floating-text">Record your voice</div>
         <div class="floating-text">Enregistrez votre voix</div>
@@ -254,33 +280,35 @@
             </div>
             
             <!-- Headline -->
-            <h2 class="text-6xl md:text-7xl font-bold leading-tight mb-12 text-soft-black">
+            <h2 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-8 md:mb-12 text-soft-black">
                 Private AI Voice Recorder
             </h2>
             
             <!-- Subheading -->
-            <p class="text-lg md:text-xl text-gray-600 mb-16 font-medium leading-relaxed">
+            <p class="text-base sm:text-lg md:text-xl text-gray-600 mb-12 md:mb-16 font-medium leading-relaxed px-4 sm:px-0">
                 Unlimited multi-language recording with built-in AI summarization.<br>
                 Nothing leaves your device.
             </p>
             
             <!-- App Store CTA -->
-            <a href="#" class="inline-flex items-center bg-soft-black text-white px-10 py-5 rounded-2xl text-xl font-semibold hover:bg-gray-800 transition-all duration-200 hover:-translate-y-1 shadow-lg">
-                <svg class="w-7 h-7 mr-4" viewBox="0 0 24 24" fill="currentColor">
+            <a href="#" class="inline-flex items-center bg-soft-black text-white px-6 sm:px-8 md:px-10 py-4 md:py-5 rounded-2xl text-lg sm:text-xl font-semibold hover:bg-gray-800 transition-all duration-200 hover:-translate-y-1 shadow-lg">
+                <svg class="w-6 h-6 sm:w-7 sm:h-7 mr-3 sm:mr-4" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
                 </svg>
-                Download on the App Store
+                <span class="hidden sm:inline">Download on the App Store</span>
+                <span class="sm:hidden">Download App</span>
             </a>
             
             <!-- Free Users Text -->
-            <p class="text-lg text-gray-600 mt-6 font-medium">Free for first 1,000 users</p>
+            <p class="text-base sm:text-lg text-gray-600 mt-4 sm:mt-6 font-medium">Free for first 1,000 users</p>
         </div>
     </header>
 
     <!-- Workflow Section -->
-    <section class="py-24 scroll-reveal" id="workflow">
+    <section class="py-12 md:py-24 scroll-reveal" id="workflow">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
+            <!-- Desktop Layout -->
+            <div class="hidden lg:grid lg:grid-cols-2 gap-12 items-center">
                 <!-- iPhone on Left -->
                 <div class="flex justify-center lg:justify-end">
                     <div class="relative">
@@ -336,69 +364,147 @@
                     </div>
                 </div>
             </div>
+            
+            <!-- Mobile Layout - Horizontal -->
+            <div class="lg:hidden">
+                <!-- Phone at top -->
+                <div class="flex justify-center mb-8">
+                    <div class="relative">
+                        <!-- iPhone 14 Pro Max Frame - Mobile Size -->
+                        <div class="relative w-48 h-96 bg-soft-black rounded-[32px] p-2 shadow-2xl">
+                            <!-- Dynamic Island -->
+                            <div class="absolute top-4 left-1/2 transform -translate-x-1/2 w-18 h-4 bg-soft-black rounded-full z-10"></div>
+                            
+                            <!-- Screen -->
+                            <div class="w-full h-full bg-gray-900 rounded-[26px] overflow-hidden relative">
+                                <!-- Workflow GIFs -->
+                                <img src="screenshots/record.gif" alt="Record voice" class="workflow-gif-mobile absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-500" data-step="record">
+                                <img src="screenshots/transcribe.gif" alt="Transcribe and translate" class="workflow-gif-mobile absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500" data-step="transcribe">
+                                <img src="screenshots/summarise.gif" alt="AI summarization" class="workflow-gif-mobile absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500" data-step="summarise">
+                                <img src="screenshots/share.gif" alt="Share results" class="workflow-gif-mobile absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500" data-step="share">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Horizontal Steps -->
+                <div class="flex overflow-x-auto gap-4 pb-4">
+                    <div class="workflow-step-mobile active cursor-pointer flex-shrink-0 w-72 p-4 bg-white rounded-xl border border-gray-200" data-step="record">
+                        <div class="flex items-center mb-2">
+                            <div class="w-8 h-8 bg-soft-black text-white rounded-lg flex items-center justify-center font-bold text-sm mr-3 step-number-mobile">1</div>
+                            <h3 class="text-xl font-bold step-title-mobile text-soft-black">Record</h3>
+                        </div>
+                        <p class="text-gray-600 text-sm step-description-mobile">Record unlimited hours in any environment</p>
+                    </div>
+                    
+                    <div class="workflow-step-mobile cursor-pointer flex-shrink-0 w-72 p-4 bg-gray-50 rounded-xl border border-gray-200" data-step="transcribe">
+                        <div class="flex items-center mb-2">
+                            <div class="w-8 h-8 bg-gray-300 text-gray-600 rounded-lg flex items-center justify-center font-bold text-sm mr-3 step-number-mobile">2</div>
+                            <h3 class="text-xl font-bold text-gray-400 step-title-mobile">Transcribe</h3>
+                        </div>
+                        <p class="text-gray-400 text-sm step-description-mobile">Transcribe from 70+ languages using OpenAI Whisper</p>
+                    </div>
+                    
+                    <div class="workflow-step-mobile cursor-pointer flex-shrink-0 w-72 p-4 bg-gray-50 rounded-xl border border-gray-200" data-step="summarise">
+                        <div class="flex items-center mb-2">
+                            <div class="w-8 h-8 bg-gray-300 text-gray-600 rounded-lg flex items-center justify-center font-bold text-sm mr-3 step-number-mobile">3</div>
+                            <h3 class="text-xl font-bold text-gray-400 step-title-mobile">Summarize</h3>
+                        </div>
+                        <p class="text-gray-400 text-sm step-description-mobile">Get AI-powered intelligent summaries and key insights</p>
+                    </div>
+                    
+                    <div class="workflow-step-mobile cursor-pointer flex-shrink-0 w-72 p-4 bg-gray-50 rounded-xl border border-gray-200" data-step="share">
+                        <div class="flex items-center mb-2">
+                            <div class="w-8 h-8 bg-gray-300 text-gray-600 rounded-lg flex items-center justify-center font-bold text-sm mr-3 step-number-mobile">4</div>
+                            <h3 class="text-xl font-bold text-gray-400 step-title-mobile">Share</h3>
+                        </div>
+                        <p class="text-gray-400 text-sm step-description-mobile">Export in multiple formats and share instantly</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Features Section -->
-    <section class="py-32 scroll-reveal" id="features">
-        <div class="max-w-5xl mx-auto px-6 text-center">
-            <h2 class="text-4xl md:text-5xl font-bold mb-20 text-soft-black">Key Features</h2>
+    <section class="py-20 scroll-reveal" id="features">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-soft-black">Key Features</h2>
             
-            <div class="grid md:grid-cols-4 gap-12">
-                <div class="p-8">
-                    <h3 class="text-xl font-semibold mb-4 text-soft-black">OpenAI Whisper</h3>
-                    <p class="text-gray-600 text-base">Industry-leading speech recognition on-device</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-200">
+                    <div class="w-12 h-12 bg-soft-black rounded-xl flex items-center justify-center mb-4 mx-auto">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2 text-soft-black">OpenAI Whisper</h3>
+                    <p class="text-gray-600 text-sm">Industry-leading speech recognition on-device</p>
                 </div>
                 
-                <div class="p-8">
-                    <h3 class="text-xl font-semibold mb-4 text-soft-black">70+ Languages</h3>
-                    <p class="text-gray-600 text-base">Multi-language support with translation</p>
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-200">
+                    <div class="w-12 h-12 bg-soft-black rounded-xl flex items-center justify-center mb-4 mx-auto">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2 text-soft-black">70+ Languages</h3>
+                    <p class="text-gray-600 text-sm">Multi-language support with translation</p>
                 </div>
                 
-                <div class="p-8">
-                    <h3 class="text-xl font-semibold mb-4 text-soft-black">Complete Privacy</h3>
-                    <p class="text-gray-600 text-base">All processing happens on your device</p>
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-200">
+                    <div class="w-12 h-12 bg-soft-black rounded-xl flex items-center justify-center mb-4 mx-auto">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2 text-soft-black">Complete Privacy</h3>
+                    <p class="text-gray-600 text-sm">All processing happens on your device</p>
                 </div>
                 
-                <div class="p-8">
-                    <h3 class="text-xl font-semibold mb-4 text-soft-black">Background Recording</h3>
-                    <p class="text-gray-600 text-base">Record while using other apps seamlessly</p>
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-200">
+                    <div class="w-12 h-12 bg-soft-black rounded-xl flex items-center justify-center mb-4 mx-auto">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2 text-soft-black">Background Recording</h3>
+                    <p class="text-gray-600 text-sm">Record while using other apps seamlessly</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Pricing Section -->
-    <section class="py-32 scroll-reveal" id="plans">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="text-center mb-20">
-                <h2 class="text-4xl md:text-5xl font-bold mb-6 text-soft-black">Simple Pricing</h2>
-                <p class="text-xl text-gray-600">Always free. Lifetime access for early users.</p>
+    <section class="py-20 scroll-reveal" id="plans">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-soft-black">Simple Pricing</h2>
+                <p class="text-lg text-gray-600">Always free. Lifetime access for early users.</p>
             </div>
             
-            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-16">
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
                 <!-- Free -->
-                <div class="bg-white border-2 border-gray-200 rounded-3xl p-8 text-center hover:shadow-lg transition-all duration-300">
-                    <div class="mb-8">
-                        <h3 class="text-2xl font-bold mb-2 text-soft-black">Free</h3>
-                        <div class="text-4xl font-bold text-soft-black mb-2">$0</div>
+                <div class="bg-white border-2 border-gray-200 rounded-2xl p-6 text-center hover:shadow-lg transition-all duration-300">
+                    <div class="mb-6">
+                        <h3 class="text-xl font-bold mb-2 text-soft-black">Free</h3>
+                        <div class="text-3xl font-bold text-soft-black mb-1">$0</div>
                         <p class="text-sm text-gray-600">Always available</p>
                     </div>
-                    <ul class="space-y-4 text-left">
+                    <ul class="space-y-3 text-left text-sm">
                         <li class="flex items-center">
-                            <svg class="w-5 h-5 text-soft-black mr-3" fill="currentColor" viewBox="0 0 20 20">
+                            <svg class="w-4 h-4 text-soft-black mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                             </svg>
                             <span class="text-gray-700">Unlimited recording</span>
                         </li>
                         <li class="flex items-center">
-                            <svg class="w-5 h-5 text-soft-black mr-3" fill="currentColor" viewBox="0 0 20 20">
+                            <svg class="w-4 h-4 text-soft-black mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                             </svg>
                             <span class="text-gray-700">Basic transcription</span>
                         </li>
                         <li class="flex items-center">
-                            <svg class="w-5 h-5 text-soft-black mr-3" fill="currentColor" viewBox="0 0 20 20">
+                            <svg class="w-4 h-4 text-soft-black mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                             </svg>
                             <span class="text-gray-700">5 languages</span>
@@ -407,37 +513,40 @@
                 </div>
                 
                 <!-- Lifetime -->
-                <div class="bg-gray-50 border-2 border-soft-black rounded-3xl p-8 text-center hover:shadow-lg transition-all duration-300 scale-105">
-                    <div class="mb-8">
-                        <h3 class="text-2xl font-bold mb-2 text-soft-black">Lifetime</h3>
-                        <div class="flex items-center justify-center mb-2">
-                            <span class="text-2xl text-gray-400 line-through mr-2">$99</span>
-                            <span class="text-4xl font-bold text-soft-black">Free</span>
+                <div class="bg-gray-50 border-2 border-soft-black rounded-2xl p-6 text-center hover:shadow-lg transition-all duration-300 relative lg:scale-105">
+                    <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-soft-black text-white px-3 py-1 rounded-full text-xs font-medium">
+                        Popular
+                    </div>
+                    <div class="mb-6">
+                        <h3 class="text-xl font-bold mb-2 text-soft-black">Lifetime</h3>
+                        <div class="flex items-center justify-center mb-1">
+                            <span class="text-lg text-gray-400 line-through mr-2">$99</span>
+                            <span class="text-3xl font-bold text-soft-black">Free</span>
                         </div>
-                        <p class="text-sm text-red-600 font-medium">First 1,000 users only</p>
+                        <p class="text-xs text-red-600 font-medium">First 1,000 users only</p>
                         <p class="text-xs text-gray-500 mt-1">Then $99 one-time</p>
                     </div>
-                    <ul class="space-y-4 text-left">
+                    <ul class="space-y-3 text-left text-sm">
                         <li class="flex items-center">
-                            <svg class="w-5 h-5 text-soft-black mr-3" fill="currentColor" viewBox="0 0 20 20">
+                            <svg class="w-4 h-4 text-soft-black mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                             </svg>
                             <span class="text-gray-700">Everything in Free</span>
                         </li>
                         <li class="flex items-center">
-                            <svg class="w-5 h-5 text-soft-black mr-3" fill="currentColor" viewBox="0 0 20 20">
+                            <svg class="w-4 h-4 text-soft-black mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                             </svg>
                             <span class="text-gray-700">AI summarization</span>
                         </li>
                         <li class="flex items-center">
-                            <svg class="w-5 h-5 text-soft-black mr-3" fill="currentColor" viewBox="0 0 20 20">
+                            <svg class="w-4 h-4 text-soft-black mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                             </svg>
                             <span class="text-gray-700">70+ languages</span>
                         </li>
                         <li class="flex items-center">
-                            <svg class="w-5 h-5 text-soft-black mr-3" fill="currentColor" viewBox="0 0 20 20">
+                            <svg class="w-4 h-4 text-soft-black mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                             </svg>
                             <span class="text-gray-700">Premium export formats</span>
@@ -446,33 +555,33 @@
                 </div>
                 
                 <!-- Yearly -->
-                <div class="bg-white border-2 border-gray-200 rounded-3xl p-8 text-center hover:shadow-lg transition-all duration-300">
-                    <div class="mb-8">
-                        <h3 class="text-2xl font-bold mb-2 text-soft-black">Yearly</h3>
-                        <div class="text-4xl font-bold text-soft-black mb-2">$30</div>
+                <div class="bg-white border-2 border-gray-200 rounded-2xl p-6 text-center hover:shadow-lg transition-all duration-300 sm:col-span-2 lg:col-span-1">
+                    <div class="mb-6">
+                        <h3 class="text-xl font-bold mb-2 text-soft-black">Yearly</h3>
+                        <div class="text-3xl font-bold text-soft-black mb-1">$30</div>
                         <p class="text-sm text-gray-600">Per year</p>
                     </div>
-                    <ul class="space-y-4 text-left">
+                    <ul class="space-y-3 text-left text-sm">
                         <li class="flex items-center">
-                            <svg class="w-5 h-5 text-soft-black mr-3" fill="currentColor" viewBox="0 0 20 20">
+                            <svg class="w-4 h-4 text-soft-black mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                             </svg>
                             <span class="text-gray-700">Everything in Lifetime</span>
                         </li>
                         <li class="flex items-center">
-                            <svg class="w-5 h-5 text-soft-black mr-3" fill="currentColor" viewBox="0 0 20 20">
+                            <svg class="w-4 h-4 text-soft-black mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                             </svg>
                             <span class="text-gray-700">Priority support</span>
                         </li>
                         <li class="flex items-center">
-                            <svg class="w-5 h-5 text-soft-black mr-3" fill="currentColor" viewBox="0 0 20 20">
+                            <svg class="w-4 h-4 text-soft-black mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                             </svg>
                             <span class="text-gray-700">Early access to features</span>
                         </li>
                         <li class="flex items-center">
-                            <svg class="w-5 h-5 text-soft-black mr-3" fill="currentColor" viewBox="0 0 20 20">
+                            <svg class="w-4 h-4 text-soft-black mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                             </svg>
                             <span class="text-gray-700">Cancel anytime</span>
@@ -483,13 +592,13 @@
             
             <!-- Single Download CTA -->
             <div class="text-center">
-                <a href="#" class="inline-flex items-center bg-soft-black text-white px-12 py-6 rounded-2xl text-xl font-semibold hover:bg-gray-800 transition-all duration-200 hover:-translate-y-1 shadow-lg">
-                    <svg class="w-7 h-7 mr-4" viewBox="0 0 24 24" fill="currentColor">
+                <a href="#" class="inline-flex items-center bg-soft-black text-white px-8 py-4 rounded-2xl text-lg font-semibold hover:bg-gray-800 transition-all duration-200 hover:-translate-y-1 shadow-lg">
+                    <svg class="w-6 h-6 mr-3" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
                     </svg>
                     Download on the App Store
                 </a>
-                <p class="text-gray-600 mt-4 text-lg">All features available through in-app purchases</p>
+                <p class="text-gray-600 mt-3 text-base">All features available through in-app purchases</p>
             </div>
         </div>
     </section>

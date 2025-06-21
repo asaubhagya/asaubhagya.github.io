@@ -2,17 +2,54 @@
 const workflowGifs = document.querySelectorAll('.workflow-gif');
 const workflowSteps = document.querySelectorAll('.workflow-step');
 
+// Mobile Menu
+document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIcon = document.getElementById('menu-icon');
+    const closeIcon = document.getElementById('close-icon');
+    
+    if (mobileMenuButton && mobileMenu) {
+        mobileMenuButton.addEventListener('click', function() {
+            const isMenuOpen = !mobileMenu.classList.contains('hidden');
+            
+            if (isMenuOpen) {
+                // Close menu
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+            } else {
+                // Open menu
+                mobileMenu.classList.remove('hidden');
+                menuIcon.classList.add('hidden');
+                closeIcon.classList.remove('hidden');
+            }
+        });
+        
+        // Close menu when clicking on links
+        mobileMenu.addEventListener('click', function(e) {
+            if (e.target.tagName === 'A') {
+                mobileMenu.classList.add('hidden');
+                menuIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+            }
+        });
+    }
+});
+
 // Workflow Animation
 document.addEventListener('DOMContentLoaded', function() {
     const workflowSteps = document.querySelectorAll('.workflow-step');
     const workflowGifs = document.querySelectorAll('.workflow-gif');
+    const workflowStepsMobile = document.querySelectorAll('.workflow-step-mobile');
+    const workflowGifsMobile = document.querySelectorAll('.workflow-gif-mobile');
     let currentStep = 0;
     let autoInterval;
     const steps = ['record', 'transcribe', 'summarise', 'share'];
     
     // Function to activate a specific step
     function activateStep(stepName) {
-        // Reset all steps to inactive state
+        // Reset all desktop steps to inactive state
         workflowSteps.forEach(step => {
             const stepNumber = step.querySelector('.step-number');
             const stepTitle = step.querySelector('.step-title');
@@ -27,12 +64,32 @@ document.addEventListener('DOMContentLoaded', function() {
             step.classList.remove('active');
         });
         
+        // Reset all mobile steps to inactive state
+        workflowStepsMobile.forEach(step => {
+            const stepNumber = step.querySelector('.step-number-mobile');
+            const stepTitle = step.querySelector('.step-title-mobile');
+            const stepDescription = step.querySelector('.step-description-mobile');
+            
+            stepNumber.classList.remove('bg-soft-black', 'text-white');
+            stepNumber.classList.add('bg-gray-300', 'text-gray-600');
+            stepTitle.classList.remove('text-soft-black');
+            stepTitle.classList.add('text-gray-400');
+            stepDescription.classList.remove('text-gray-600');
+            stepDescription.classList.add('text-gray-400');
+            step.classList.remove('active');
+            step.classList.remove('bg-white', 'border-gray-200');
+            step.classList.add('bg-gray-50', 'border-gray-200');
+        });
+        
         // Hide all GIFs
         workflowGifs.forEach(gif => {
             gif.style.opacity = '0';
         });
+        workflowGifsMobile.forEach(gif => {
+            gif.style.opacity = '0';
+        });
         
-        // Activate the selected step
+        // Activate the selected desktop step
         const activeStep = document.querySelector(`[data-step="${stepName}"].workflow-step`);
         const activeGif = document.querySelector(`[data-step="${stepName}"].workflow-gif`);
         
@@ -50,8 +107,31 @@ document.addEventListener('DOMContentLoaded', function() {
             activeStep.classList.add('active');
         }
         
+        // Activate the selected mobile step
+        const activeStepMobile = document.querySelector(`[data-step="${stepName}"].workflow-step-mobile`);
+        const activeGifMobile = document.querySelector(`[data-step="${stepName}"].workflow-gif-mobile`);
+        
+        if (activeStepMobile) {
+            const stepNumber = activeStepMobile.querySelector('.step-number-mobile');
+            const stepTitle = activeStepMobile.querySelector('.step-title-mobile');
+            const stepDescription = activeStepMobile.querySelector('.step-description-mobile');
+            
+            stepNumber.classList.add('bg-soft-black', 'text-white');
+            stepNumber.classList.remove('bg-gray-300', 'text-gray-600');
+            stepTitle.classList.add('text-soft-black');
+            stepTitle.classList.remove('text-gray-400');
+            stepDescription.classList.add('text-gray-600');
+            stepDescription.classList.remove('text-gray-400');
+            activeStepMobile.classList.add('active');
+            activeStepMobile.classList.add('bg-white', 'border-gray-200');
+            activeStepMobile.classList.remove('bg-gray-50');
+        }
+        
         if (activeGif) {
             activeGif.style.opacity = '1';
+        }
+        if (activeGifMobile) {
+            activeGifMobile.style.opacity = '1';
         }
     }
     
@@ -67,8 +147,31 @@ document.addEventListener('DOMContentLoaded', function() {
     // Start auto-cycling
     autoInterval = setInterval(cycleSteps, 4000);
     
-    // Manual step clicking
+    // Manual step clicking - Desktop
     workflowSteps.forEach((step, index) => {
+        step.addEventListener('click', function() {
+            const stepName = this.getAttribute('data-step');
+            const stepIndex = steps.indexOf(stepName);
+            
+            if (stepIndex !== -1) {
+                currentStep = stepIndex;
+                
+                // Clear existing interval
+                clearInterval(autoInterval);
+                
+                // Activate clicked step
+                activateStep(stepName);
+                
+                // Restart auto-cycling after 4 seconds
+                setTimeout(() => {
+                    autoInterval = setInterval(cycleSteps, 4000);
+                }, 4000);
+            }
+        });
+    });
+    
+    // Manual step clicking - Mobile
+    workflowStepsMobile.forEach((step, index) => {
         step.addEventListener('click', function() {
             const stepName = this.getAttribute('data-step');
             const stepIndex = steps.indexOf(stepName);
