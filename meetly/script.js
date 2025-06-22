@@ -159,6 +159,11 @@ document.addEventListener('DOMContentLoaded', function() {
         if (isWorkflowVisible) {
             currentStep = (currentStep + 1) % steps.length;
             activateStep(steps[currentStep]);
+            
+            // Track auto workflow progression
+            if (typeof window.MeetlyAnalytics !== 'undefined') {
+                window.MeetlyAnalytics.trackWorkflowStep(steps[currentStep], 'auto');
+            }
         }
     }
     
