@@ -4,10 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8CXEMKMPC3"></script>
-    <script src="../analytics-config.js"></script>
-    
     <!-- Primary Meta Tags -->
     <title>Meetly - Private AI Voice Recorder | Unlimited Recording & Transcription</title>
     <meta name="title" content="Meetly - Private AI Voice Recorder | Unlimited Recording & Transcription">
@@ -54,71 +50,14 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/meetly/favicon-16x16.png">
     <link rel="manifest" href="/meetly/site.webmanifest">
     
-    <!-- Preconnect for Performance -->
-    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <!-- Optimized Font Loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap" as="style">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&display=swap"></noscript>
     
-    <!-- Structured Data (JSON-LD) -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "SoftwareApplication",
-        "name": "Meetly",
-        "description": "Private AI voice recorder with unlimited multi-language recording, transcription, and AI summarization. Nothing leaves your device.",
-        "url": "https://asaubhagya.github.io/meetly/",
-        "applicationCategory": "ProductivityApplication",
-        "operatingSystem": "iOS",
-        "offers": [
-            {
-                "@type": "Offer",
-                "price": "0",
-                "priceCurrency": "USD",
-                "name": "Free Plan",
-                "description": "30 minute recording sessions, unlimited recordings, 70+ languages"
-            },
-            {
-                "@type": "Offer",
-                "price": "9.99",
-                "priceCurrency": "USD",
-                "name": "Pro Plan",
-                "description": "Unlimited session length, 90+ languages, custom prompts, lifetime access"
-            }
-        ],
-        "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.8",
-            "ratingCount": "150"
-        },
-        "author": {
-            "@type": "Organization",
-            "name": "Meetly",
-            "url": "https://asaubhagya.github.io/meetly/"
-        },
-        "publisher": {
-            "@type": "Organization",
-            "name": "Meetly",
-            "url": "https://asaubhagya.github.io/meetly/"
-        },
-        "screenshot": "https://asaubhagya.github.io/meetly/screenshots/app-screenshot.png",
-        "featureList": [
-            "Unlimited voice recording",
-            "AI-powered transcription with OpenAI Whisper",
-            "90+ language support",
-            "Complete privacy - on-device processing",
-            "Background recording",
-            "AI summarization and insights",
-            "Multi-format export and sharing"
-        ],
-        "downloadUrl": "https://apps.apple.com/app/meetly",
-        "softwareVersion": "1.0",
-        "datePublished": "2025-01-01",
-        "dateModified": "2025-01-01"
-    }
-    </script>
-    
-    <!-- Tailwind CSS -->
+    <!-- Tailwind CSS - Load normally for better LCP -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -134,42 +73,19 @@
             }
         }
     </script>
+    
+    <!-- Critical CSS for immediate rendering -->
     <style>
+        body {
+            font-family: 'Urbanist', system-ui, -apple-system, sans-serif;
+        }
+        
         .paper-texture {
             background-color: #fefefe;
             background-image: 
-                /* Subtle paper grain */
                 radial-gradient(circle at 25% 25%, rgba(0, 0, 0, 0.008) 0%, transparent 50%),
-                radial-gradient(circle at 75% 75%, rgba(0, 0, 0, 0.008) 0%, transparent 50%),
-                radial-gradient(circle at 75% 25%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 25% 75%, rgba(0, 0, 0, 0.005) 0%, transparent 50%),
-                /* Very subtle fiber texture */
-                linear-gradient(45deg, transparent 48%, rgba(0, 0, 0, 0.003) 49%, rgba(0, 0, 0, 0.003) 51%, transparent 52%),
-                linear-gradient(-45deg, transparent 48%, rgba(0, 0, 0, 0.002) 49%, rgba(0, 0, 0, 0.002) 51%, transparent 52%),
-                /* Subtle noise pattern */
-                repeating-linear-gradient(
-                    0deg,
-                    transparent,
-                    transparent 2px,
-                    rgba(0, 0, 0, 0.002) 2px,
-                    rgba(0, 0, 0, 0.002) 4px
-                ),
-                repeating-linear-gradient(
-                    90deg,
-                    transparent,
-                    transparent 2px,
-                    rgba(0, 0, 0, 0.001) 2px,
-                    rgba(0, 0, 0, 0.001) 4px
-                );
-            background-size: 
-                200px 200px,
-                180px 180px,
-                220px 220px,
-                160px 160px,
-                100px 100px,
-                120px 120px,
-                8px 8px,
-                8px 8px;
+                radial-gradient(circle at 75% 75%, rgba(0, 0, 0, 0.008) 0%, transparent 50%);
+            background-size: 200px 200px, 180px 180px;
         }
         
         .audio-wave {
@@ -208,98 +124,39 @@
             opacity: 1;
             transform: translateY(0);
         }
-        
-        .floating-text {
-            position: absolute;
-            color: rgba(0, 0, 0, 0.12);
-            font-weight: 300;
-            pointer-events: none;
-            user-select: none;
-            z-index: 1;
-            animation: cornerFade 6s ease-in-out infinite;
-        }
-        
-        /* Make floating text much lighter on mobile to reduce clutter */
-        @media (max-width: 768px) {
-            .floating-text {
-                color: rgba(0, 0, 0, 0.04);
-                font-size: 0.8em !important;
-            }
-        }
-        
-        @keyframes cornerFade {
-            0%, 100% { 
-                opacity: 0;
-                transform: scale(0.9);
-            }
-            30%, 70% { 
-                opacity: 0.8;
-                transform: scale(1);
-            }
-        }
-        
-        /* Position text in different areas of hero section */
-        .floating-text:nth-child(1) { 
-            top: 15%; 
-            left: 8%; 
-            animation-delay: 0s; 
-            font-size: 22px; 
-        }
-        .floating-text:nth-child(2) { 
-            top: 20%; 
-            right: 10%; 
-            animation-delay: 1s; 
-            font-size: 18px; 
-        }
-        .floating-text:nth-child(3) { 
-            bottom: 30%; 
-            left: 12%; 
-            animation-delay: 2s; 
-            font-size: 24px; 
-        }
-        .floating-text:nth-child(4) { 
-            bottom: 25%; 
-            right: 8%; 
-            animation-delay: 3s; 
-            font-size: 20px; 
-        }
-        .floating-text:nth-child(5) { 
-            top: 60%; 
-            left: 5%; 
-            animation-delay: 4s; 
-            font-size: 26px; 
-        }
-        .floating-text:nth-child(6) { 
-            top: 40%; 
-            right: 15%; 
-            animation-delay: 5s; 
-            font-size: 19px; 
-        }
-        .floating-text:nth-child(7) { 
-            bottom: 40%; 
-            left: 20%; 
-            animation-delay: 0.5s; 
-            font-size: 21px; 
-        }
-        .floating-text:nth-child(8) { 
-            top: 70%; 
-            right: 12%; 
-            animation-delay: 1.5s; 
-            font-size: 23px; 
-        }
-        .floating-text:nth-child(9) { 
-            bottom: 50%; 
-            right: 25%; 
-            animation-delay: 2.5s; 
-            font-size: 20px; 
-        }
-        .floating-text:nth-child(10) { 
-            top: 35%; 
-            left: 15%; 
-            animation-delay: 3.5s; 
-            font-size: 25px; 
-        }
     </style>
+    
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Meetly",
+        "description": "Private AI voice recorder with unlimited multi-language recording, transcription, and AI summarization. Nothing leaves your device.",
+        "url": "https://asaubhagya.github.io/meetly/",
+        "applicationCategory": "ProductivityApplication",
+        "operatingSystem": "iOS",
+        "offers": [
+            {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD",
+                "name": "Free Plan"
+            },
+            {
+                "@type": "Offer",
+                "price": "9.99",
+                "priceCurrency": "USD",
+                "name": "Pro Plan"
+            }
+        ],
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "ratingCount": "150"
+        }
+    }
+    </script>
 </head>
 <body class="font-urbanist text-gray-900 antialiased paper-texture min-h-screen">
     <!-- Top Navigation Bar -->
@@ -362,19 +219,7 @@
     </nav>
 
     <!-- Hero Section - Full Screen -->
-    <header class="min-h-screen flex items-center justify-center px-6 pt-20 pb-4 md:pb-8 relative overflow-hidden" itemscope itemtype="https://schema.org/SoftwareApplication">
-        <!-- Floating multilingual text -->
-        <div class="floating-text">Record your voice</div>
-        <div class="floating-text">Enregistrez votre voix</div>
-        <div class="floating-text">Graba tu voz</div>
-        <div class="floating-text">録音してください</div>
-        <div class="floating-text">Aufnahme starten</div>
-        <div class="floating-text">नमस्ते</div>
-        <div class="floating-text">வணக்கம்</div>
-        <div class="floating-text">ਸਤ ਸ੍ਰੀ ਅਕਾਲ</div>
-        <div class="floating-text">你好</div>
-        <div class="floating-text">안녕하세요</div>
-        
+    <header class="min-h-screen flex items-center justify-center px-6 pt-20 pb-4 md:pb-8 relative overflow-hidden" itemscope itemtype="https://schema.org/SoftwareApplication">        
         <div class="max-w-3xl mx-auto text-center relative z-10">
             <!-- Logo -->
             <div class="flex items-center justify-center mb-16">
@@ -395,7 +240,7 @@
                 Private AI Voice Recorder
             </h1>
             
-            <!-- Subheading -->
+            <!-- Subheading - LCP Element -->
             <p class="text-base sm:text-lg md:text-xl text-gray-600 mb-12 md:mb-16 font-medium leading-relaxed px-4 sm:px-0" itemprop="description">
                 <span class="bg-gradient-to-r from-soft-black to-gray-700 bg-clip-text text-transparent font-semibold">Unlimited</span> multi-language recording with built-in AI summarization.<br>
                 <span class="bg-gradient-to-r from-soft-black to-gray-700 bg-clip-text text-transparent font-semibold">Nothing leaves your device</span> - completely <span class="bg-gradient-to-r from-soft-black to-gray-700 bg-clip-text text-transparent font-semibold">private</span>.
@@ -430,11 +275,28 @@
                             
                             <!-- Screen -->
                             <div class="w-full h-full bg-gray-900 rounded-[52px] overflow-hidden relative">
-                                <!-- Workflow GIFs -->
-                                <img src="screenshots/record.gif" alt="Record voice" class="workflow-gif absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-500" data-step="record">
-                                <img src="screenshots/transcribe.gif" alt="Transcribe and translate" class="workflow-gif absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500" data-step="transcribe">
-                                <img src="screenshots/summarise.gif" alt="AI summarization" class="workflow-gif absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500" data-step="summarise">
-                                <img src="screenshots/share.gif" alt="Share results" class="workflow-gif absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500" data-step="share">
+                                <!-- Workflow Videos -->
+                                <video class="workflow-video absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-500" data-step="record" autoplay muted loop playsinline preload="metadata">
+                                    <source src="screenshots/record.mp4" type="video/mp4">
+                                    <source src="screenshots/record.webm" type="video/webm">
+                                    <!-- Fallback to GIF for unsupported browsers -->
+                                    <img src="screenshots/record.gif" alt="Record voice" class="w-full h-full object-cover">
+                                </video>
+                                <video class="workflow-video absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500" data-step="transcribe" muted loop playsinline preload="metadata">
+                                    <source src="screenshots/transcribe.mp4" type="video/mp4">
+                                    <source src="screenshots/transcribe.webm" type="video/webm">
+                                    <img src="screenshots/transcribe.gif" alt="Transcribe and translate" class="w-full h-full object-cover">
+                                </video>
+                                <video class="workflow-video absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500" data-step="summarise" muted loop playsinline preload="metadata">
+                                    <source src="screenshots/summarise.mp4" type="video/mp4">
+                                    <source src="screenshots/summarise.webm" type="video/webm">
+                                    <img src="screenshots/summarise.gif" alt="AI summarization" class="w-full h-full object-cover">
+                                </video>
+                                <video class="workflow-video absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500" data-step="share" muted loop playsinline preload="metadata">
+                                    <source src="screenshots/share.mp4" type="video/mp4">
+                                    <source src="screenshots/share.webm" type="video/webm">
+                                    <img src="screenshots/share.gif" alt="Share results" class="w-full h-full object-cover">
+                                </video>
                             </div>
                         </div>
                     </div>
@@ -488,11 +350,27 @@
                             
                             <!-- Screen -->
                             <div class="w-full h-full bg-gray-900 rounded-[26px] overflow-hidden relative">
-                                <!-- Workflow GIFs -->
-                                <img src="screenshots/record.gif" alt="Record voice" class="workflow-gif-mobile absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-500" data-step="record">
-                                <img src="screenshots/transcribe.gif" alt="Transcribe and translate" class="workflow-gif-mobile absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500" data-step="transcribe">
-                                <img src="screenshots/summarise.gif" alt="AI summarization" class="workflow-gif-mobile absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500" data-step="summarise">
-                                <img src="screenshots/share.gif" alt="Share results" class="workflow-gif-mobile absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500" data-step="share">
+                                <!-- Workflow Videos -->
+                                <video class="workflow-video-mobile absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-500" data-step="record" autoplay muted loop playsinline preload="metadata">
+                                    <source src="screenshots/record.mp4" type="video/mp4">
+                                    <source src="screenshots/record.webm" type="video/webm">
+                                    <img src="screenshots/record.gif" alt="Record voice" class="w-full h-full object-cover">
+                                </video>
+                                <video class="workflow-video-mobile absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500" data-step="transcribe" muted loop playsinline preload="metadata">
+                                    <source src="screenshots/transcribe.mp4" type="video/mp4">
+                                    <source src="screenshots/transcribe.webm" type="video/webm">
+                                    <img src="screenshots/transcribe.gif" alt="Transcribe and translate" class="w-full h-full object-cover">
+                                </video>
+                                <video class="workflow-video-mobile absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500" data-step="summarise" muted loop playsinline preload="metadata">
+                                    <source src="screenshots/summarise.mp4" type="video/mp4">
+                                    <source src="screenshots/summarise.webm" type="video/webm">
+                                    <img src="screenshots/summarise.gif" alt="AI summarization" class="w-full h-full object-cover">
+                                </video>
+                                <video class="workflow-video-mobile absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500" data-step="share" muted loop playsinline preload="metadata">
+                                    <source src="screenshots/share.mp4" type="video/mp4">
+                                    <source src="screenshots/share.webm" type="video/webm">
+                                    <img src="screenshots/share.gif" alt="Share results" class="w-full h-full object-cover">
+                                </video>
                             </div>
                         </div>
                     </div>
@@ -721,6 +599,171 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <!-- Deferred Analytics for Performance -->
+    <script>
+        // Load analytics after page is fully loaded
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                const gaScript = document.createElement('script');
+                gaScript.async = true;
+                gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-8CXEMKMPC3';
+                document.head.appendChild(gaScript);
+                
+                const analyticsScript = document.createElement('script');
+                analyticsScript.src = '../analytics-config.js';
+                document.head.appendChild(analyticsScript);
+            }, 2000);
+        });
+        
+        // Simple scroll reveal
+        function scrollReveal() {
+            const reveals = document.querySelectorAll('.scroll-reveal');
+            for (let i = 0; i < reveals.length; i++) {
+                const windowHeight = window.innerHeight;
+                const elementTop = reveals[i].getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add('revealed');
+                }
+            }
+        }
+        
+        window.addEventListener('scroll', scrollReveal);
+        document.addEventListener('DOMContentLoaded', scrollReveal);
+        
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+                 // Navbar scroll effect
+         window.addEventListener('scroll', function() {
+             const navbar = document.getElementById('navbar');
+             const navLogo = document.getElementById('nav-logo');
+             
+             if (window.scrollY > 100) {
+                 navLogo.style.opacity = '1';
+                 navLogo.style.transform = 'translateX(0)';
+             } else {
+                 navLogo.style.opacity = '0';
+                 navLogo.style.transform = 'translateX(-16px)';
+             }
+         });
+         
+         // Workflow video switching
+         function setupWorkflow() {
+             const workflowSteps = document.querySelectorAll('.workflow-step');
+             const workflowStepsMobile = document.querySelectorAll('.workflow-step-mobile');
+             const workflowVideos = document.querySelectorAll('.workflow-video');
+             const workflowVideosMobile = document.querySelectorAll('.workflow-video-mobile');
+             
+             function switchVideo(targetStep) {
+                 // Desktop videos
+                 workflowVideos.forEach(video => {
+                     const isActive = video.dataset.step === targetStep;
+                     video.style.opacity = isActive ? '1' : '0';
+                     if (isActive) {
+                         video.play();
+                     } else {
+                         video.pause();
+                     }
+                 });
+                 
+                 // Mobile videos
+                 workflowVideosMobile.forEach(video => {
+                     const isActive = video.dataset.step === targetStep;
+                     video.style.opacity = isActive ? '1' : '0';
+                     if (isActive) {
+                         video.play();
+                     } else {
+                         video.pause();
+                     }
+                 });
+                 
+                 // Update step appearance
+                 workflowSteps.forEach(step => {
+                     const isActive = step.dataset.step === targetStep;
+                     const number = step.querySelector('.step-number');
+                     const title = step.querySelector('.step-title');
+                     const description = step.querySelector('.step-description');
+                     
+                     if (isActive) {
+                         step.classList.add('active');
+                         number.classList.remove('bg-gray-300', 'text-gray-600');
+                         number.classList.add('bg-soft-black', 'text-white');
+                         title.classList.remove('text-gray-400');
+                         title.classList.add('text-soft-black');
+                         description.classList.remove('text-gray-400');
+                         description.classList.add('text-gray-600');
+                     } else {
+                         step.classList.remove('active');
+                         number.classList.add('bg-gray-300', 'text-gray-600');
+                         number.classList.remove('bg-soft-black', 'text-white');
+                         title.classList.add('text-gray-400');
+                         title.classList.remove('text-soft-black');
+                         description.classList.add('text-gray-400');
+                         description.classList.remove('text-gray-600');
+                     }
+                 });
+                 
+                 // Update mobile step appearance
+                 workflowStepsMobile.forEach(step => {
+                     const isActive = step.dataset.step === targetStep;
+                     const number = step.querySelector('.step-number-mobile');
+                     const title = step.querySelector('.step-title-mobile');
+                     const description = step.querySelector('.step-description-mobile');
+                     
+                     if (isActive) {
+                         step.classList.add('active');
+                         step.classList.remove('bg-gray-50');
+                         step.classList.add('bg-white');
+                         number.classList.remove('bg-gray-300', 'text-gray-600');
+                         number.classList.add('bg-soft-black', 'text-white');
+                         title.classList.remove('text-gray-400');
+                         title.classList.add('text-soft-black');
+                         description.classList.remove('text-gray-400');
+                         description.classList.add('text-gray-600');
+                     } else {
+                         step.classList.remove('active');
+                         step.classList.add('bg-gray-50');
+                         step.classList.remove('bg-white');
+                         number.classList.add('bg-gray-300', 'text-gray-600');
+                         number.classList.remove('bg-soft-black', 'text-white');
+                         title.classList.add('text-gray-400');
+                         title.classList.remove('text-soft-black');
+                         description.classList.add('text-gray-400');
+                         description.classList.remove('text-gray-600');
+                     }
+                 });
+             }
+             
+             // Add click listeners
+             workflowSteps.forEach(step => {
+                 step.addEventListener('click', () => {
+                     switchVideo(step.dataset.step);
+                 });
+             });
+             
+             workflowStepsMobile.forEach(step => {
+                 step.addEventListener('click', () => {
+                     switchVideo(step.dataset.step);
+                 });
+             });
+             
+             // Auto-cycle through steps
+             let currentStepIndex = 0;
+             const steps = ['record', 'transcribe', 'summarise', 'share'];
+             
+             setInterval(() => {
+                 currentStepIndex = (currentStepIndex + 1) % steps.length;
+                 switchVideo(steps[currentStepIndex]);
+             }, 4000);
+         }
+         
+         // Initialize workflow after page load
+         document.addEventListener('DOMContentLoaded', setupWorkflow);
+    </script>
 </body>
 </html> 
