@@ -43,8 +43,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const workflowGifs = document.querySelectorAll('.workflow-gif');
     const workflowStepsMobile = document.querySelectorAll('.workflow-step-mobile');
     const workflowGifsMobile = document.querySelectorAll('.workflow-gif-mobile');
+    const workflowSection = document.getElementById('workflow');
     let currentStep = 0;
     let autoInterval;
+    let isWorkflowVisible = false;
     const steps = ['record', 'transcribe', 'summarise', 'share'];
     
     // Function to activate a specific step
@@ -133,19 +135,72 @@ document.addEventListener('DOMContentLoaded', function() {
         if (activeGifMobile) {
             activeGifMobile.style.opacity = '1';
         }
+        
+        // Auto-scroll active mobile step to center
+        if (activeStepMobile) {
+            const container = activeStepMobile.parentElement;
+            const cardWidth = activeStepMobile.offsetWidth;
+            const containerWidth = container.offsetWidth;
+            const cardOffsetLeft = activeStepMobile.offsetLeft;
+            
+            // Calculate scroll position to center the active card
+            const scrollLeft = cardOffsetLeft - (containerWidth / 2) + (cardWidth / 2);
+            
+            // Smooth scroll to center the active card
+            container.scrollTo({
+                left: scrollLeft,
+                behavior: 'smooth'
+            });
+        }
     }
     
     // Auto-cycle through steps every 4 seconds
     function cycleSteps() {
-        currentStep = (currentStep + 1) % steps.length;
-        activateStep(steps[currentStep]);
+        if (isWorkflowVisible) {
+            currentStep = (currentStep + 1) % steps.length;
+            activateStep(steps[currentStep]);
+        }
     }
     
-    // Initialize with first step
-    activateStep(steps[0]);
+    // Start auto-cycling when workflow is visible
+    function startWorkflowAnimation() {
+        if (!autoInterval && isWorkflowVisible) {
+            // Initialize with first step
+            activateStep(steps[0]);
+            currentStep = 0;
+            
+            // Start auto-cycling
+            autoInterval = setInterval(cycleSteps, 4000);
+        }
+    }
     
-    // Start auto-cycling
-    autoInterval = setInterval(cycleSteps, 4000);
+    // Stop auto-cycling when workflow is not visible
+    function stopWorkflowAnimation() {
+        if (autoInterval) {
+            clearInterval(autoInterval);
+            autoInterval = null;
+        }
+    }
+    
+    // Intersection Observer for workflow section
+    const workflowObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                isWorkflowVisible = true;
+                startWorkflowAnimation();
+            } else {
+                isWorkflowVisible = false;
+                stopWorkflowAnimation();
+            }
+        });
+    }, {
+        threshold: 0.3, // Start animation when 30% of workflow section is visible
+        rootMargin: '0px 0px -100px 0px'
+    });
+    
+    if (workflowSection) {
+        workflowObserver.observe(workflowSection);
+    }
     
     // Manual step clicking - Desktop
     workflowSteps.forEach((step, index) => {
@@ -157,14 +212,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 currentStep = stepIndex;
                 
                 // Clear existing interval
-                clearInterval(autoInterval);
+                stopWorkflowAnimation();
                 
                 // Activate clicked step
                 activateStep(stepName);
                 
-                // Restart auto-cycling after 4 seconds
+                // Restart auto-cycling after 4 seconds if visible
                 setTimeout(() => {
-                    autoInterval = setInterval(cycleSteps, 4000);
+                    if (isWorkflowVisible) {
+                        startWorkflowAnimation();
+                    }
                 }, 4000);
             }
         });
@@ -180,14 +237,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 currentStep = stepIndex;
                 
                 // Clear existing interval
-                clearInterval(autoInterval);
+                stopWorkflowAnimation();
                 
                 // Activate clicked step
                 activateStep(stepName);
                 
-                // Restart auto-cycling after 4 seconds
+                // Restart auto-cycling after 4 seconds if visible
                 setTimeout(() => {
-                    autoInterval = setInterval(cycleSteps, 4000);
+                    if (isWorkflowVisible) {
+                        startWorkflowAnimation();
+                    }
                 }, 4000);
             }
         });
