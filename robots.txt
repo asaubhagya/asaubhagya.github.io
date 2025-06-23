@@ -21,7 +21,6 @@ Allow: /*.svg$
 
 # Block sensitive or unnecessary files
 Disallow: /.git/
-Disallow: /.*
 Disallow: /.DS_Store
 Disallow: /node_modules/
 Disallow: /*GUIDE.md$
