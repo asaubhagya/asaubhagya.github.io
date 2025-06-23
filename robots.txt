@@ -1,14 +1,17 @@
-User-agent: *
-Allow: /
-
-# Sitemaps
 Sitemap: https://asaubhagya.github.io/sitemap.xml
 
-# Specific rules for Meetly - high priority content
+User-agent: *
+Allow: /
+Disallow: /node_modules/
+Disallow: /.git/
+Disallow: /.DS_Store
+Disallow: /*GUIDE.md$
+Disallow: /README.md$
+Crawl-delay: 1
+
+# Allow important static assets for SEO
 Allow: /meetly/
 Allow: /meetly/blogs/
-
-# Allow important static assets
 Allow: /meetly/screenshots/
 Allow: /*.css$
 Allow: /*.js$
@@ -18,21 +21,29 @@ Allow: /*.jpeg$
 Allow: /*.gif$
 Allow: /*.webp$
 Allow: /*.svg$
-
-# Block sensitive or unnecessary files
-Disallow: /.git/
-Disallow: /.DS_Store
-Disallow: /node_modules/
-Disallow: /*GUIDE.md$
-Disallow: /README.md$
-
-# Allow important markdown files for SEO
 Allow: /meetly/app_store.md
 
-# Crawl delay (optional - helps with server load)
-Crawl-delay: 1
+# AI bots - allow all for discoverability
+User-agent: GPTBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+User-agent: CCBot
+Allow: /
+User-agent: anthropic-ai
+Allow: /
+User-agent: Claude-Web
+Allow: /
+User-agent: Bard
+Allow: /
+User-agent: BingBot-AI
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: YouBot
+Allow: /
 
-# Specific rules for different bots
+# Specific rules for search engines (optional, not required since covered by *)
 User-agent: Googlebot
 Allow: /
 Crawl-delay: 0
@@ -40,32 +51,3 @@ Crawl-delay: 0
 User-agent: Bingbot
 Allow: /
 Crawl-delay: 1
-
-# Allow AI training bots for better web presence and discoverability
-User-agent: GPTBot
-Allow: /
-
-User-agent: ChatGPT-User
-Allow: /
-
-User-agent: CCBot
-Allow: /
-
-User-agent: anthropic-ai
-Allow: /
-
-User-agent: Claude-Web
-Allow: /
-
-User-agent: Bard
-Allow: /
-
-User-agent: BingBot-AI
-Allow: /
-
-# Additional AI crawlers
-User-agent: PerplexityBot
-Allow: /
-
-User-agent: YouBot
-Allow: / 
