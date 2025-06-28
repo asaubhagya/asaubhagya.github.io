@@ -64,7 +64,7 @@
             width: 80px;
             height: 80px;
             border-radius: 50%;
-            background-image: url('./profilepic.jpg');
+            background-image: url('profilepic.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -114,12 +114,75 @@
             opacity: 0.7;
         }
 
-        .subtitle {
+                    .subtitle {
             font-size: 1.1rem;
             color: #666;
             font-weight: 300;
             line-height: 1.6;
             margin-top: 16px;
+        }
+
+        .app-cards {
+            display: flex;
+            gap: 16px;
+            margin-top: 24px;
+            flex-wrap: wrap;
+        }
+
+        .app-card {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(0,0,0,0.02);
+            border: 1px solid #f2f1ee;
+            border-radius: 8px;
+            padding: 12px 16px;
+            transition: all 0.2s ease;
+            min-width: 200px;
+        }
+
+        .app-card:hover {
+            background: rgba(0,0,0,0.04);
+            border-color: #e8e6e1;
+        }
+
+        .app-icon {
+            font-size: 1.5rem;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 8px;
+        }
+
+        .app-info {
+            flex: 1;
+        }
+
+        .app-name {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #222;
+            margin-bottom: 2px;
+        }
+
+        .app-desc {
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        .app-link {
+            color: #667eea;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .app-link:hover {
+            color: #5a67d8;
         }
 
         .navigation {
@@ -158,7 +221,7 @@
 
         .main-content {
             padding: 50px 60px 80px;
-            margin-top: 240px;
+            margin-top: 280px;
             max-width: 70%;
         }
 
@@ -449,8 +512,8 @@
 
         .project-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 24px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
             margin-top: 20px;
         }
 
@@ -458,7 +521,7 @@
             background: #fefdfb;
             border: 1px solid #e8e6e1;
             border-radius: 12px;
-            padding: 24px;
+            padding: 20px;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
@@ -556,6 +619,12 @@
             margin-top: auto;
         }
 
+        .card-links {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
         .card-link {
             color: #667eea;
             text-decoration: none;
@@ -566,6 +635,15 @@
 
         .card-link:hover {
             color: #5a67d8;
+        }
+
+        .card-link.secondary {
+            color: #666;
+            font-size: 0.85rem;
+        }
+
+        .card-link.secondary:hover {
+            color: #333;
         }
 
         .card-link-disabled {
@@ -700,8 +778,17 @@
 
             .main-content {
                 padding: 40px 30px 50px;
-                margin-top: 220px;
+                margin-top: 260px;
                 max-width: 90%;
+            }
+
+            .app-cards {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .app-card {
+                min-width: auto;
             }
 
             .footer {
@@ -749,6 +836,26 @@
                     </div>
                 </div>
                 <p class="subtitle">Building with data, design, and code | Senior Engineering Manager @ Grab | ex Zomato, IIT Madras</p>
+                
+                <!-- App Cards -->
+                <div class="app-cards">
+                    <div class="app-card">
+                        <div class="app-icon">🎙️</div>
+                        <div class="app-info">
+                            <div class="app-name">Meetly</div>
+                            <div class="app-desc">AI voice transcription</div>
+                        </div>
+                        <a href="https://www.getmeetly.ai/" target="_blank" class="app-link">Try Now</a>
+                    </div>
+                    <div class="app-card">
+                        <div class="app-icon">🧠</div>
+                        <div class="app-info">
+                            <div class="app-name">ProfilesAI</div>
+                            <div class="app-desc">Edge AI personalization</div>
+                        </div>
+                        <a href="http://profilesai.tech/" target="_blank" class="app-link">Explore</a>
+                    </div>
+                </div>
             </div>
 
             <!-- Navigation Section - Full Width -->
@@ -820,11 +927,11 @@
                 <h2>Projects</h2>
                 
                 <div class="project-filters">
-                    <button class="filter-chip active" data-filter="company">Company</button>
-                    <button class="filter-chip" data-filter="personal">Personal</button>
+                    <button class="filter-chip active" data-filter="personal">Personal</button>
+                    <button class="filter-chip" data-filter="company">Company</button>
                 </div>
 
-                <div id="company-group" class="project-group active">
+                <div id="company-group" class="project-group">
                     <div class="project">
                         <div class="project-name">Customer Data Platform (CDP)</div>
                         <div class="project-description">In-house customer data platform that unifies user data across 60+ services and 8 major platforms. Enables real-time personalization and improved targeting accuracy.</div>
@@ -868,7 +975,7 @@
                     </div>
                 </div>
 
-                <div id="personal-group" class="project-group">
+                <div id="personal-group" class="project-group active">
                     <div class="project-cards">
                         <div class="project-card featured">
                             <div class="card-header">
@@ -882,17 +989,22 @@
                                 <p class="card-description">
                                     AI-powered voice recording and transcript sharing tool. Record conversations, get instant transcriptions, and share insights with smart summaries.
                                 </p>
-                                <div class="card-features">
-                                    <span class="feature-tag">Voice Recording</span>
-                                    <span class="feature-tag">AI Transcription</span>
-                                    <span class="feature-tag">Smart Sharing</span>
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <a href="https://www.getmeetly.ai/" target="_blank" class="card-link">
-                                    Visit App →
-                                </a>
-                            </div>
+                                                                 <div class="card-features">
+                                     <span class="feature-tag">Voice Recording</span>
+                                     <span class="feature-tag">AI Transcription</span>
+                                     <span class="feature-tag">Smart Sharing</span>
+                                 </div>
+                             </div>
+                             <div class="card-footer">
+                                 <div class="card-links">
+                                     <a href="https://www.getmeetly.ai/" target="_blank" class="card-link">
+                                         Web App →
+                                     </a>
+                                     <a href="https://apps.apple.com/app/meetly" target="_blank" class="card-link secondary">
+                                         iOS App
+                                     </a>
+                                 </div>
+                             </div>
                         </div>
 
                         <div class="project-card">
@@ -911,9 +1023,11 @@
                                     <span class="feature-tag">Personalization</span>
                                 </div>
                             </div>
-                            <div class="card-footer">
-                                <span class="card-link-disabled">Coming Soon</span>
-                            </div>
+                                                         <div class="card-footer">
+                                 <a href="http://profilesai.tech/" target="_blank" class="card-link">
+                                     Visit Site →
+                                 </a>
+                             </div>
                         </div>
                     </div>
                 </div>
