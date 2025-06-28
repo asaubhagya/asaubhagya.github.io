@@ -804,8 +804,21 @@
              const workflowStepsMobile = document.querySelectorAll('.workflow-step-mobile');
              const workflowVideos = document.querySelectorAll('.workflow-video');
              const workflowVideosMobile = document.querySelectorAll('.workflow-video-mobile');
+             const workflowSection = document.getElementById('workflow');
+             const mobileContainer = document.querySelector('.overflow-x-auto');
+             
+             let currentStepIndex = 0;
+             const steps = ['record', 'transcribe', 'summarise', 'rich-summary', 'share'];
+             let autoPlayInterval = null;
+             let isInView = false;
              
              function switchVideo(targetStep) {
+                 // Find the index of the target step
+                 const stepIndex = steps.indexOf(targetStep);
+                 if (stepIndex !== -1) {
+                     currentStepIndex = stepIndex;
+                 }
+                 
                  // Desktop videos
                  workflowVideos.forEach(video => {
                      const isActive = video.dataset.step === targetStep;
@@ -854,8 +867,8 @@
                      }
                  });
                  
-                 // Update mobile step appearance
-                 workflowStepsMobile.forEach(step => {
+                 // Update mobile step appearance and scroll into view
+                 workflowStepsMobile.forEach((step, index) => {
                      const isActive = step.dataset.step === targetStep;
                      const number = step.querySelector('.step-number-mobile');
                      const title = step.querySelector('.step-title-mobile');
@@ -871,6 +884,16 @@
                          title.classList.add('text-soft-black');
                          description.classList.remove('text-gray-400');
                          description.classList.add('text-gray-600');
+                         
+                         // Scroll active step into view on mobile
+                         if (window.innerWidth < 1024 && mobileContainer) { // lg breakpoint
+                             const stepWidth = step.offsetWidth + 16; // width + gap
+                             const scrollPosition = index * stepWidth;
+                             mobileContainer.scrollTo({
+                                 left: scrollPosition,
+                                 behavior: 'smooth'
+                             });
+                         }
                      } else {
                          step.classList.remove('active');
                          step.classList.add('bg-gray-50');
@@ -885,27 +908,77 @@
                  });
              }
              
+             function startAutoPlay() {
+                 if (autoPlayInterval) {
+                     clearInterval(autoPlayInterval);
+                 }
+                 
+                 // Start from record step
+                 currentStepIndex = 0;
+                 switchVideo(steps[currentStepIndex]);
+                 
+                 autoPlayInterval = setInterval(() => {
+                     currentStepIndex = (currentStepIndex + 1) % steps.length;
+                     switchVideo(steps[currentStepIndex]);
+                 }, 4000);
+             }
+             
+             function stopAutoPlay() {
+                 if (autoPlayInterval) {
+                     clearInterval(autoPlayInterval);
+                     autoPlayInterval = null;
+                 }
+             }
+             
+             // Intersection Observer to detect when workflow section is in view
+             const observer = new IntersectionObserver((entries) => {
+                 entries.forEach(entry => {
+                     if (entry.isIntersecting) {
+                         if (!isInView) {
+                             isInView = true;
+                             startAutoPlay();
+                         }
+                     } else {
+                         if (isInView) {
+                             isInView = false;
+                             stopAutoPlay();
+                         }
+                     }
+                 });
+             }, {
+                 threshold: 0.3 // Start when 30% of the section is visible
+             });
+             
+             if (workflowSection) {
+                 observer.observe(workflowSection);
+             }
+             
              // Add click listeners
              workflowSteps.forEach(step => {
                  step.addEventListener('click', () => {
+                     stopAutoPlay();
                      switchVideo(step.dataset.step);
+                     // Restart autoplay after user interaction
+                     setTimeout(() => {
+                         if (isInView) {
+                             startAutoPlay();
+                         }
+                     }, 5000);
                  });
              });
              
              workflowStepsMobile.forEach(step => {
                  step.addEventListener('click', () => {
+                     stopAutoPlay();
                      switchVideo(step.dataset.step);
+                     // Restart autoplay after user interaction
+                     setTimeout(() => {
+                         if (isInView) {
+                             startAutoPlay();
+                         }
+                     }, 5000);
                  });
              });
-             
-             // Auto-cycle through steps
-             let currentStepIndex = 0;
-             const steps = ['record', 'transcribe', 'summarise', 'rich-summary', 'share'];
-             
-             setInterval(() => {
-                 currentStepIndex = (currentStepIndex + 1) % steps.length;
-                 switchVideo(steps[currentStepIndex]);
-             }, 4000);
          }
          
                  // Initialize workflow after page load
