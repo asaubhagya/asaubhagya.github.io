@@ -8,64 +8,7 @@
     <priority>0.8</priority>
   </url>
   
-  <!-- Meetly main page - highest priority -->
-  <url>
-    <loc>https://asaubhagya.github.io/meetly/</loc>
-    <lastmod>2025-06-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  
-  <!-- Meetly subpages -->
-  <url>
-    <loc>https://asaubhagya.github.io/meetly/blog.html</loc>
-    <lastmod>2025-06-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
-    <loc>https://asaubhagya.github.io/meetly/contact.html</loc>
-    <lastmod>2025-06-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://asaubhagya.github.io/meetly/privacy.html</loc>
-    <lastmod>2025-06-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://asaubhagya.github.io/meetly/terms.html</loc>
-    <lastmod>2025-06-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <!-- Blog posts - high priority for SEO -->
-  <url>
-    <loc>https://asaubhagya.github.io/meetly/blogs/meetly-vs-otter-voice-memos-rev.html</loc>
-    <lastmod>2025-06-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  <url>
-    <loc>https://asaubhagya.github.io/meetly/blogs/10-ways-ai-voice-transcription-transform-workflow.html</loc>
-    <lastmod>2025-06-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  
-  <url>
-    <loc>https://asaubhagya.github.io/meetly/blogs/future-multilingual-voice-recognition-70-languages.html</loc>
-    <lastmod>2025-06-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
+
   
 
 </urlset> 

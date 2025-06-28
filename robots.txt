@@ -10,9 +10,6 @@ Disallow: /README.md$
 Crawl-delay: 1
 
 # Allow important static assets for SEO
-Allow: /meetly/
-Allow: /meetly/blogs/
-Allow: /meetly/screenshots/
 Allow: /*.css$
 Allow: /*.js$
 Allow: /*.png$
@@ -21,7 +18,6 @@ Allow: /*.jpeg$
 Allow: /*.gif$
 Allow: /*.webp$
 Allow: /*.svg$
-Allow: /meetly/app_store.md
 
 # AI bots - allow all for discoverability
 User-agent: GPTBot
