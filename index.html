@@ -114,6 +114,23 @@
             opacity: 0.7;
         }
 
+        .social-divider {
+            color: #ccc;
+            font-size: 0.8rem;
+            margin: 0 4px;
+        }
+
+        .app-link-header {
+            color: #777 !important;
+            font-size: 0.85rem !important;
+            opacity: 0.8;
+        }
+
+        .app-link-header:hover {
+            color: #444 !important;
+            opacity: 1;
+        }
+
                     .subtitle {
             font-size: 1.1rem;
             color: #666;
@@ -122,68 +139,7 @@
             margin-top: 16px;
         }
 
-        .app-cards {
-            display: flex;
-            gap: 16px;
-            margin-top: 24px;
-            flex-wrap: wrap;
-        }
 
-        .app-card {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            background: rgba(0,0,0,0.02);
-            border: 1px solid #f2f1ee;
-            border-radius: 8px;
-            padding: 12px 16px;
-            transition: all 0.2s ease;
-            min-width: 200px;
-        }
-
-        .app-card:hover {
-            background: rgba(0,0,0,0.04);
-            border-color: #e8e6e1;
-        }
-
-        .app-icon {
-            font-size: 1.5rem;
-            width: 36px;
-            height: 36px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(102, 126, 234, 0.1);
-            border-radius: 8px;
-        }
-
-        .app-info {
-            flex: 1;
-        }
-
-        .app-name {
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: #222;
-            margin-bottom: 2px;
-        }
-
-        .app-desc {
-            font-size: 0.8rem;
-            color: #666;
-        }
-
-        .app-link {
-            color: #667eea;
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 500;
-            transition: color 0.2s ease;
-        }
-
-        .app-link:hover {
-            color: #5a67d8;
-        }
 
         .navigation {
             background: #fefdfb;
@@ -237,6 +193,7 @@
             font-size: 1.4rem;
             font-weight: 500;
             margin-bottom: 32px;
+            padding-top: 20px;
             color: #222;
             letter-spacing: -0.01em;
         }
@@ -512,30 +469,30 @@
 
         .project-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px;
             margin-top: 20px;
         }
 
         .project-card {
-            background: #fefdfb;
-            border: 1px solid #e8e6e1;
-            border-radius: 12px;
-            padding: 20px;
-            transition: all 0.3s ease;
+            background: transparent;
+            border: 1px solid #f5f4f1;
+            border-radius: 8px;
+            padding: 16px;
+            transition: all 0.2s ease;
             position: relative;
             overflow: hidden;
         }
 
         .project-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-            border-color: #d4d2cc;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            border-color: #e8e6e1;
         }
 
         .project-card.featured {
-            border: 2px solid #667eea;
-            background: linear-gradient(135deg, #fefdfb 0%, #f8f7f4 100%);
+            border: 1px solid #e8e6e1;
+            background: rgba(0,0,0,0.01);
         }
 
         .card-header {
@@ -546,40 +503,40 @@
         }
 
         .project-icon {
-            font-size: 2rem;
-            width: 48px;
-            height: 48px;
+            font-size: 1.5rem;
+            width: 36px;
+            height: 36px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(102, 126, 234, 0.1);
-            border-radius: 12px;
+            background: rgba(0,0,0,0.03);
+            border-radius: 8px;
         }
 
         .project-badge {
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 500;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 400;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.3px;
         }
 
         .project-badge.active {
-            background: #dcfce7;
-            color: #166534;
+            background: rgba(0,0,0,0.05);
+            color: #555;
         }
 
         .project-badge.building {
-            background: #fef3c7;
-            color: #92400e;
+            background: rgba(0,0,0,0.05);
+            color: #555;
         }
 
         .card-content h3 {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: #1a1a1a;
-            margin-bottom: 12px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 8px;
         }
 
         .card-content h3 a {
@@ -589,14 +546,14 @@
         }
 
         .card-content h3 a:hover {
-            color: #667eea;
+            color: #555;
         }
 
         .card-description {
-            color: #555;
-            line-height: 1.6;
-            margin-bottom: 16px;
-            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.5;
+            margin-bottom: 12px;
+            font-size: 0.85rem;
         }
 
         .card-features {
@@ -607,12 +564,12 @@
         }
 
         .feature-tag {
-            background: rgba(0,0,0,0.05);
-            color: #666;
-            padding: 4px 10px;
-            border-radius: 16px;
-            font-size: 0.8rem;
-            font-weight: 500;
+            background: rgba(0,0,0,0.03);
+            color: #777;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 400;
         }
 
         .card-footer {
@@ -626,24 +583,24 @@
         }
 
         .card-link {
-            color: #667eea;
+            color: #666;
             text-decoration: none;
-            font-weight: 500;
-            font-size: 0.9rem;
+            font-weight: 400;
+            font-size: 0.8rem;
             transition: color 0.2s ease;
         }
 
         .card-link:hover {
-            color: #5a67d8;
+            color: #333;
         }
 
         .card-link.secondary {
-            color: #666;
-            font-size: 0.85rem;
+            color: #777;
+            font-size: 0.8rem;
         }
 
         .card-link.secondary:hover {
-            color: #333;
+            color: #444;
         }
 
         .card-link-disabled {
@@ -754,11 +711,11 @@
 
             .project-cards {
                 grid-template-columns: 1fr;
-                gap: 20px;
+                gap: 16px;
             }
 
             .project-card {
-                padding: 20px;
+                padding: 16px;
             }
 
             .navigation {
@@ -782,14 +739,7 @@
                 max-width: 90%;
             }
 
-            .app-cards {
-                flex-direction: column;
-                gap: 12px;
-            }
 
-            .app-card {
-                min-width: auto;
-            }
 
             .footer {
                 padding: 15px 30px;
@@ -828,34 +778,21 @@
                             </a>
                             <a href="https://twitter.com/asaubhagya" target="_blank">
                                 <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.80l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
                                 </svg>
                                 Twitter
+                            </a>
+                            <span class="social-divider">•</span>
+                            <a href="https://www.getmeetly.ai/" target="_blank" class="app-link-header">
+                                🎙️ Meetly
+                            </a>
+                            <a href="http://profilesai.tech/" target="_blank" class="app-link-header">
+                                🧠 ProfilesAI
                             </a>
                         </div>
                     </div>
                 </div>
                 <p class="subtitle">Building with data, design, and code | Senior Engineering Manager @ Grab | ex Zomato, IIT Madras</p>
-                
-                <!-- App Cards -->
-                <div class="app-cards">
-                    <div class="app-card">
-                        <div class="app-icon">🎙️</div>
-                        <div class="app-info">
-                            <div class="app-name">Meetly</div>
-                            <div class="app-desc">AI voice transcription</div>
-                        </div>
-                        <a href="https://www.getmeetly.ai/" target="_blank" class="app-link">Try Now</a>
-                    </div>
-                    <div class="app-card">
-                        <div class="app-icon">🧠</div>
-                        <div class="app-info">
-                            <div class="app-name">ProfilesAI</div>
-                            <div class="app-desc">Edge AI personalization</div>
-                        </div>
-                        <a href="http://profilesai.tech/" target="_blank" class="app-link">Explore</a>
-                    </div>
-                </div>
             </div>
 
             <!-- Navigation Section - Full Width -->
