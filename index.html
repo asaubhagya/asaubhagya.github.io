@@ -120,6 +120,12 @@
             margin: 0 4px;
         }
 
+        .meetly-links {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
         .app-link-header {
             color: #222 !important;
             font-size: 0.85rem !important;
@@ -718,9 +724,9 @@
             }
 
             .profile-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 16px;
+                flex-direction: row;
+                align-items: center;
+                gap: 12px;
                 text-align: left;
             }
 
@@ -739,7 +745,7 @@
             }
 
             .subtitle {
-                font-size: 1.05rem;
+                font-size: 0.95rem;
             }
 
             .project-cards {
@@ -816,12 +822,14 @@
                                 Twitter
                             </a>
                             <span class="social-divider">•</span>
-                            <a href="https://www.getmeetly.ai/" target="_blank" class="app-link-header">
-                                🎙️ Meetly
-                            </a>
-                            <a href="https://apps.apple.com/us/app/meetly-secure-ai-voice-notes/id6747639933" target="_blank" class="app-link-header app-download-btn">
-                                📱 Download iOS App
-                            </a>
+                            <div class="meetly-links">
+                                <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M3 12h2a7 7 0 0114 0h2a9 9 0 00-18 0zm4 0h2a3 3 0 016 0h2a5 5 0 00-10 0zm4 0h2a1 1 0 012 0h2a3 3 0 00-6 0z"/>
+                                </svg>
+                                <a href="https://www.getmeetly.ai/" target="_blank">meetly.ai</a>
+                                <span class="social-divider">•</span>
+                                <a href="https://apps.apple.com/us/app/meetly-secure-ai-voice-notes/id6747639933" target="_blank">App&nbsp;Store</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1041,13 +1049,14 @@
                 section.classList.remove('active');
             });
             
-            document.getElementById(sectionId).classList.add('active');
-            
-            document.querySelectorAll('.nav-link').forEach(link => {
-                link.classList.remove('active');
-            });
-            document.querySelector(`[href="#${sectionId}"]`).classList.add('active');
-        }
+        document.getElementById(sectionId).classList.add('active');
+
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.classList.remove('active');
+        });
+        document.querySelector(`[href="#${sectionId}"]`).classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
 
         function filterProjects(filterType) {
             // Update filter chips
